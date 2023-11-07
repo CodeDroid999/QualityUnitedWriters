@@ -54,4 +54,4 @@ export const description = [
   },
 ]
 
-export const ogImageTitle = 'A Next.js Blog with a Native Authoring Experience'
+export const ogImageTitle = 'Quality Unitted Writers - Your Academic Research and Project Partner'
