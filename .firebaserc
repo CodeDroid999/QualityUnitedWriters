@@ -1,6 +1,7 @@
 {
   "projects": {
-    "staging": "qualityunitedwriters"
+    "staging": "qualityunitedwriters",
+    "default": "qualityunitedwriters"
   },
   "targets": {},
   "etags": {}
