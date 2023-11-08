@@ -1,3 +1,4 @@
+import Hero from 'components/Homepage/Hero'
 import Layout from 'components/layout/layout'
 import { readToken } from 'lib/sanity.api'
 import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
@@ -42,7 +43,7 @@ export default function Home(props: PageProps) {
         <meta name="og:image" property="og:image" content="public/airtaskalogo.jpeg" />
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
-
+      <Hero />
     </Layout>
   )
 }
