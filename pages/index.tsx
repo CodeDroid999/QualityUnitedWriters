@@ -43,3 +43,8 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
     },
   }
 }
+
+
+
+
+
