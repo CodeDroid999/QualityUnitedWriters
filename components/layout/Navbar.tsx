@@ -19,9 +19,9 @@ const Navbar = () => {
         />
       </div>
       <ul className={`nav-links ${showDropdown ? 'hidden' : ''}`}>
-        <li><a href="#">How It Works</a></li>
-        <li><a href="#">Sign In</a></li>
-        <li><a href="#">Sign Up</a></li>
+        <li><a href="/howitworks">How It Works</a></li>
+        <li><a href="/login">Sign In</a></li>
+        <li><a href="/signup">Sign Up</a></li>
       </ul>
       <div className="mobile-menu" onClick={toggleDropdown}>
         <div className={`bar ${showDropdown ? 'open' : ''}`}></div>
