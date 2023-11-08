@@ -8,7 +8,7 @@ export default function Navbar() {
         <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-20">
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
             <div className="md:col-span-1">
-              <h4 className="font-semibold text-gray-100">Discover</h4>
+              <h4 className="font-semibold text-green-900">Discover</h4>
 
               <div className="mt-3 grid space-y-3">
                 <p>
@@ -87,7 +87,7 @@ export default function Navbar() {
             </div>
 
             <div className="md:col-span-1">
-              <h4 className="font-semibold text-gray-100">Company</h4>
+              <h4 className="font-semibold text-green-900">Company</h4>
 
               <div className="mt-3 grid space-y-3">
                 <p>
@@ -174,7 +174,7 @@ export default function Navbar() {
             </div>
 
             <div className="col-span-1">
-              <h4 className="font-semibold text-gray-100">Existing members</h4>
+              <h4 className="font-semibold text-green-900">Existing members</h4>
               <div className="mt-3 grid space-y-3">
                 <p>
                   <Link
@@ -212,7 +212,7 @@ export default function Navbar() {
             </div>
             <div className="col-span-1">
 
-              <h4 className="font-semibold text-gray-100">Popular Services</h4>
+              <h4 className="font-semibold text-green-900">Popular Services</h4>
 
               <div className="mt-3 grid space-y-3">
                 <p>
@@ -264,7 +264,7 @@ export default function Navbar() {
             </div>
 
             <div className="col-span-1 ">
-              <h4 className="font-semibold text-gray-100">Popular locations</h4>
+              <h4 className="font-semibold text-green-900">Popular locations</h4>
 
               <div className="mt-3 grid space-y-3">
                 <p>
@@ -328,7 +328,7 @@ export default function Navbar() {
             </div>
             <div>
               <a
-                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white ocus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
                 href="https://www.facebook.com/profile.php?id=100095462311480"
               >
                 <svg
@@ -344,7 +344,7 @@ export default function Navbar() {
               </a>
 
               <a
-                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white ocus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
                 href="https://www.instagram.com/airtaska/?igshid=NGExMmI2YTkyZg%3D%3D"
               >
                 <svg
@@ -363,7 +363,7 @@ export default function Navbar() {
                 </svg>
               </a>
               <a
-                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white ocus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
                 href="#"
               >
                 <svg
@@ -378,7 +378,7 @@ export default function Navbar() {
                 </svg>
               </a>
               <a
-                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white ocus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
                 href="https://twitter.com/airtaska?t=Z3QCo7Yclx-wZeWSPjjOcQ&s=09"
               >
                 <svg
