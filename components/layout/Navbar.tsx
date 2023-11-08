@@ -1,5 +1,3 @@
-import "styles/Navbar.css"
-
 import Image from 'next/image'
 import QualityUnitedWritersLogo from "public/logo.png"
 import React, { useState } from 'react';
