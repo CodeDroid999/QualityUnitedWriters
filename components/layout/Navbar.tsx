@@ -15,7 +15,7 @@ const Navbar = () => {
       <Image
           src={QualityUnitedWritersLogo}
           alt="features"
-          className="h-[400px] w-[100%] rounded-2xl  md:h-[500px] lg:h-[600px] lg:w-[500px] "
+          className="h-16 w-30] "
         />
       </div>
       <ul className={`nav-links ${showDropdown ? 'hidden' : ''}`}>
