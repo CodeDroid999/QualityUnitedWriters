@@ -183,12 +183,18 @@ export default function Signup() {
         <meta name="og:image" property="og:image" content="public/airtaskalogo.jpeg" />
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
-      <div>
-        <p className="mb-10 text-center text-2xl font-medium text-green-950">
-          Sign Up to QualityUnitedWriters
+     <div className="p-3 border-green-950 rounded bg-white">
+     <div className="flex sp[ace-x-2 items-center justify-center pt-2 pb-2">
+        <p className=" text-center text-2xl font-medium text-green-950 pr-2">
+        <Link href="/signup">Signup</Link> 
+        </p>
+        <p className=" text-center text-xl font-medium text-gray-450 pr-2">
+or        </p>
+        <p className="text-center text-2xl font-medium text-green-950">
+        <Link href="/login">Login</Link>
         </p>
       </div>
-      <form onSubmit={handleSignUp} className="flex flex-col gap-4">
+      <form onSubmit={handleSignUp} className="flex flex-col gap-4 p-2">
         <div className="flex flex-col">
           <label htmlFor="email" className="mb-1 font-medium text-gray-700">
             Email
@@ -257,6 +263,7 @@ export default function Signup() {
           Continue with Google
         </button>
       </form>
+     </div>
     </AuthLayout>
   )
 }

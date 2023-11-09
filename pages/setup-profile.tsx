@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
-import { BsCurrencyDollar, BsCheckCircle } from 'react-icons/bs'
-import { useRouter } from 'next/navigation'
-import toast from 'react-hot-toast'
+import axios from 'axios'
+import { UserAuth } from 'context/AuthContext'
 import {
   collection,
   doc,
@@ -10,10 +8,13 @@ import {
   updateDoc,
   where,
 } from 'firebase/firestore'
-import { db } from '../firebase'
-import { UserAuth } from 'context/AuthContext'
-import axios from 'axios'
 import Head from 'next/head'
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
+import toast from 'react-hot-toast'
+import { BsCheckCircle,BsCurrencyDollar } from 'react-icons/bs'
+
+import { db } from '../firebase'
 
 export default function CompleteAccount() {
   const [firstName, setfirstName] = useState('')
@@ -115,7 +116,7 @@ export default function CompleteAccount() {
           content="Airtaska is your one-stop destination for finding the right tasks and talented taskers. Post any task, pick the best person, and get it done. Join now to earn money as a tasker or post your tasks for free."
         />
         <meta name="og:image" property="og:image" content="public/airtaskalogo.jpeg" />
-        <meta name="og:url" property="og:url" content="https://www.airtaska.com" />
+        <meta name="og:url" property="og:url" content="https://www.QualityUnitedWriters.com" />
       </Head>
       <div className="mx-auto max-w-[500px]">
         <div className="w-full">
@@ -165,8 +166,7 @@ export default function CompleteAccount() {
                 htmlFor="mainGoal"
                 className="mb-2 text-lg font-medium text-gray-700"
               >
-                What is your main goal on Airtaska?
-              </label>
+                What is your main goal?       </label>
               <div className="mt-2 flex w-full flex-row space-x-2">
                 <div
                   onClick={() => handleRole('Poster')}
@@ -177,8 +177,7 @@ export default function CompleteAccount() {
                 >
                   <div className="flex h-full flex-col items-center justify-center ">
                     <BsCheckCircle size={20} className="mb-1" />
-                    Get things done
-                  </div>
+                    Student: Get homework help                 </div>
                 </div>
                 <div
                   onClick={() => handleRole('Tasker')}
@@ -189,8 +188,7 @@ export default function CompleteAccount() {
                 >
                   <div className="flex h-full flex-col items-center justify-center ">
                     <BsCurrencyDollar size={20} className="mb-1" />
-                    Earn money
-                  </div>
+                   Tutor: Offer assignment help                  </div>
                 </div>
               </div>
               {roleError && <span className="text-red-500">{roleError}</span>}
