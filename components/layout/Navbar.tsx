@@ -20,7 +20,7 @@ const CustomNavbar = () => {
       <MobileNavbar/>
 
       {/**Desktop */}
-      <div className="hidden w-full items-center justify-between font-semibold lg:flex">
+      <div className=" w-full items-center justify-between font-semibold lg:flex">
         <div className="flex flex-row items-center">
           <div className="mr-1">
             <h1 className="text-4xl font-bold">
