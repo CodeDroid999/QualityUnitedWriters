@@ -7,6 +7,7 @@ import 'styles/custom.css';
 import 'styles/index.css';
 import 'styles/responsive.css';
 
+
 import { AppProps } from 'next/app'
 import { lazy } from 'react'
 
