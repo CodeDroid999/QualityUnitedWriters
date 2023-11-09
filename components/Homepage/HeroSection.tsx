@@ -1,14 +1,20 @@
 import Home from 'components/layout/HomeSection';
 import CustomNavbar from 'components/layout/Navbar';
+import Image from 'next/image'
+import HeroBackground from  "public/hero-bg.jpg"
 import React from 'react';
-
 
 const HeroArea = () => {
     return (
         <div className="hero_area">
             <div className="hero_bg_box">
                 <div className="img-box">
-                    <img src="public/hero-bg.jpg" alt="" />
+                <Image
+                    src={HeroBackground}
+                    alt="task"
+                    
+                    className="w-full h-full"
+                  />
                 </div>
             </div>
             <Home />
