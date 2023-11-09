@@ -3,11 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { useState } from 'react';
-
 import MobileNavbar from './MobileNav';
 
 
-const CustomNavbar = () => {
+const LightCustomNavbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -26,7 +25,7 @@ const CustomNavbar = () => {
               <Link href="/" className="text-gray-700">
                 <div className="mb-1">
                   <Image
-                    src="https://i.postimg.cc/FRXRmLQ5/log.png"
+                    src="https://i.postimg.cc/XNkwcFKP/favicon.png"
                     alt="task"
                     width={200}
                     height={100}
@@ -41,38 +40,38 @@ const CustomNavbar = () => {
         </div>
 
         {/* Right-side links */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2">
           <Link
             href="/"
-            className="font-medium text-white hover:text-green-500"
+            className="px-2 py-1 font-medium text-gray-700 hover:bg-gray-200"
           >
             HOME
           </Link>
 
           <Link
             href="/about"
-            className="font-medium text-white hover:text-green-500"
+            className="px-2 py-1 font-medium text-gray-700 hover:bg-gray-200"
           >
             ABOUT
           </Link>
           <Link
             href="/services"
-            className="font-medium text-white hover:text-green-500"
+            className=" px-2 py-1 font-medium text-gray-700 hover:bg-gray-200"
           >
             SERVICES
           </Link> <Link
             href="/projects"
-            className="font-medium text-white hover:text-green-500"
+            className="px-2 py-1 font-medium text-gray-700 hover:bg-gray-200"
           >
             PROJECTS          </Link> <Link
               href="/blog"
-              className="font-medium text-white hover:text-green-500"
+              className="px-2 py-1 font-medium text-gray-700 hover:bg-gray-200"
             >
             BLOG
           </Link>
           <Link
             href="/contact-us"
-            className="font-medium text-white hover:text-green-500"
+            className="px-2 py-1 font-medium text-gray-700  hover:text-blue-800 hover:bg-gray-200"
           >
             CONTACT US
           </Link>
@@ -83,4 +82,4 @@ const CustomNavbar = () => {
   );
 };
 
-export default CustomNavbar;
+export default LightCustomNavbar;
