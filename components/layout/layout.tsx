@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-sync-scripts */
-import React from 'react'
-import Footer from './Footer'
 import Head from 'next/head'
-import Navbar from './Navbar'
+import React from 'react'
+
+import Footer from './Footer'
+import CustomNavbar from './Navbar'
 
 export default function Layout({ children }) {
   return (
@@ -40,7 +41,7 @@ export default function Layout({ children }) {
           rel="stylesheet"
         />
       </Head>
-      <Navbar />
+      <CustomNavbar/>
       <main className="mt-20 lg:mt-24">{children}</main>
       <Footer />
     </div>
