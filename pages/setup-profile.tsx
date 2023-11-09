@@ -1,5 +1,7 @@
-import axios from 'axios'
-import { UserAuth } from 'context/AuthContext'
+import React, { useState } from 'react'
+import { BsCurrencyDollar, BsCheckCircle } from 'react-icons/bs'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 import {
   collection,
   doc,
@@ -8,13 +10,10 @@ import {
   updateDoc,
   where,
 } from 'firebase/firestore'
-import Head from 'next/head'
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
-import toast from 'react-hot-toast'
-import { BsCheckCircle,BsCurrencyDollar } from 'react-icons/bs'
-
 import { db } from '../firebase'
+import { UserAuth } from 'context/AuthContext'
+import axios from 'axios'
+import Head from 'next/head'
 
 export default function CompleteAccount() {
   const [firstName, setfirstName] = useState('')
@@ -24,8 +23,7 @@ export default function CompleteAccount() {
   const [role, setRole] = useState('')
   const [activeRole, setActiveRole] = useState('')
   const [roleError, setRoleError] = useState('')
-  const { user } = UserAuth() || {}; // Use optional chaining here
-
+  const { user } = UserAuth()
 
   const router = useRouter()
 
@@ -97,27 +95,27 @@ export default function CompleteAccount() {
   return (
 
     <div className="mx-auto mt-10 h-screen w-full max-w-[1200px] px-3 md:mt-20">
-     <Head>
+      <Head>
         <title>
-          QualityUnitedWriters - Your Academic Research and Project Partner
+          Airtaska | Get More Done | Post any task. Pick the best person. Get it done. | Post your task for free Earn money as a tasker
         </title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Discover a dedicated platform for students and tutors offering expert assistance in a wide range of academic research and projects. Quality Unitted Writers connects you with quality solutions for your educational needs. Whether you're seeking help with essays, theses, or any academic work, our talented team is here to assist you."
+          content="Airtaska is your one-stop destination for finding the right tasks and talented taskers. Post any task, pick the best person, and get it done. Join now to earn money as a tasker or post your tasks for free."
         />
-        <meta name="keywords" content="Academic writing services, Expert academic writers, Professional research assistance, High-quality research papers, Academic project support, Thesis and dissertation help, Essay writing service, Top-rated tutors, Academic success tips, Homework assistance, Online tutoring, Quality writing solutions, Best essay writers, Custom research papers, Academic support platform, Tutoring for students, Research paper editing, Writing and editing services, Academic guidance, Homework help for students" />
-        <meta name="author" content="QualityUnitedWriters" />
+        <meta name="keywords" content="Airtaska, tasks, tasker, earn money, post task" />
+        <meta name="author" content="Airtaska" />
         <meta name="robots" content="index, follow" />
-        <meta name="og:title" property="og:title" content="QualityUnitedWriters - Your Academic Research and Project Partner" />
+        <meta name="og:title" property="og:title" content="Airtaska | Get More Done" />
         <meta
           name="og:description"
           property="og:description"
-          content="Discover a dedicated platform for students and tutors offering expert assistance in a wide range of academic research and projects. Quality Unitted Writers connects you with quality solutions for your educational needs. Whether you're seeking help with essays, theses, or any academic work, our talented team is here to assist you."
+          content="Airtaska is your one-stop destination for finding the right tasks and talented taskers. Post any task, pick the best person, and get it done. Join now to earn money as a tasker or post your tasks for free."
         />
         <meta name="og:image" property="og:image" content="public/airtaskalogo.jpeg" />
-        <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
+        <meta name="og:url" property="og:url" content="https://www.airtaska.com" />
       </Head>
       <div className="mx-auto max-w-[500px]">
         <div className="w-full">
@@ -167,7 +165,8 @@ export default function CompleteAccount() {
                 htmlFor="mainGoal"
                 className="mb-2 text-lg font-medium text-gray-700"
               >
-                What is your main goal?       </label>
+                What is your main goal on Airtaska?
+              </label>
               <div className="mt-2 flex w-full flex-row space-x-2">
                 <div
                   onClick={() => handleRole('Poster')}
@@ -178,7 +177,8 @@ export default function CompleteAccount() {
                 >
                   <div className="flex h-full flex-col items-center justify-center ">
                     <BsCheckCircle size={20} className="mb-1" />
-                    Student: Get homework help                 </div>
+                    Get things done
+                  </div>
                 </div>
                 <div
                   onClick={() => handleRole('Tasker')}
@@ -189,7 +189,8 @@ export default function CompleteAccount() {
                 >
                   <div className="flex h-full flex-col items-center justify-center ">
                     <BsCurrencyDollar size={20} className="mb-1" />
-                   Tutor: Offer assignment help                  </div>
+                    Earn money
+                  </div>
                 </div>
               </div>
               {roleError && <span className="text-red-500">{roleError}</span>}
