@@ -11,7 +11,7 @@ const HeroArea = () => {
                     <img src="public/hero-bg.jpg" alt="" />
                 </div>
             </div>
-            <Home/>
+            <Home />
             <section className=" slider_section ">
                 <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">
@@ -21,17 +21,14 @@ const HeroArea = () => {
                                     <div className="col-md-7">
                                         <div className="detail-box">
                                             <h1>
-                                                Crafting Cinematic
-                                                <span>
-                                                    experiences </span>
+                                                Get on-demand Q&A<span> Homework help</span> from verified tutors.
                                             </h1>
                                             <p>
-                                                Transforming ideas into captivating stories through the magic of film. Experience creativity in
-                                                motion.
+                                            Work with thousands of tutors to help you meet your deadlines and get the grades you so sorely need!
                                             </p>
-                                            <div className="btn-box">
-                                                <a href="#about" className="btn-1"> Learn more </a>
-                                                <a href="#contact" className="btn-2">Get A Quote</a>
+                                            <div className="btn-box whitespace-nowrap">
+                                                <a href="/howitworks" className="btn-1 rounded"> Learn more </a>
+                                                <a href="" className="btn-2 rounded">Post Assignment</a>
                                             </div>
                                         </div>
                                     </div>
@@ -44,17 +41,14 @@ const HeroArea = () => {
                                     <div className="col-md-7">
                                         <div className="detail-box">
                                             <h1>
-                                                Elevating visual
+                                                Apply for an account to start working online.
                                                 <span>
-                                                    storytelling </span>
+                                                    Tutor Online </span>
                                             </h1>
-                                            <p>
-                                                Concepts become vivid realities, leaving an indelible mark on audiences. See your vision come
-                                                alive.
-                                            </p>
-                                            <div className="btn-box">
-                                                <a href="#about" className="btn-1"> Learn more </a>
-                                                <a href="#contact" className="btn-2">Get A Quote</a>
+                                            <p>Every 15 assigned tutoring, get 10% cash back (Limited to $50) on your posted assignments!</p>
+                                            <div className="btn-box whitespace-nowrap">
+                                                <a href="/howitworks" className="btn-1 rounded"> Learn more </a>
+                                                <a href="" className="btn-2 rounded">Become a tutor</a>
                                             </div>
                                         </div>
                                     </div>
@@ -67,9 +61,7 @@ const HeroArea = () => {
                                     <div className="col-md-7">
                                         <div className="detail-box">
                                             <h1>
-                                                Unleash your
-                                                <span>
-                                                    creative vision </span>
+                                            APA examples/ samples<span> creative vision </span>
                                             </h1>
                                             <p>
                                                 Collaborate to bring your ideas to life with precision, creativity, and innovation. We are your

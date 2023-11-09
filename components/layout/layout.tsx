@@ -36,10 +36,14 @@ export default function Layout({ children }) {
           name="description"
           content="Post your task for free | Earn money as a tasker| Discover how Airtaska works | Trusted ratings and reviews| Insurance for peace of mind | Join Airtaska today!"
         />
-        
+
       </Head>
-      <CustomNavbar/>
-      <main className="mt-20 lg:mt-24">{children}</main>
+      <header id="home" className="header_section">
+        <div className="header_bottom">
+          <CustomNavbar />
+        </div>
+      </header>
+      <main className="mt-2 lg:mt-24">{children}</main>
       <Footer />
     </div>
   )
