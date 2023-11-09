@@ -24,7 +24,8 @@ export default function CompleteAccount() {
   const [role, setRole] = useState('')
   const [activeRole, setActiveRole] = useState('')
   const [roleError, setRoleError] = useState('')
-  const { user } = UserAuth()
+  const { user } = UserAuth() || {}; // Use optional chaining here
+
 
   const router = useRouter()
 
