@@ -122,7 +122,7 @@ export default function Signup() {
       };
 
       // Make the HTTP request to the api/welcomeuser route
-      await axios.post('/api/welcomeuser', userData);
+      //await axios.post('/api/welcomeuser', userData);
       const userRef = await addDoc(collection(db, 'users'), {
         firstName: '',
         lastName: '',
