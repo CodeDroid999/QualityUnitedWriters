@@ -5,7 +5,12 @@ import CustomNavbar from './Navbar';
 const Home: React.FC = () => {
     return (
         <header id="home" className="header_section">
-            <div className="header_top">
+             <div className="hero_bg_box">
+                <div className="img-box">
+                    <img src="public/hero-bg.jpg" alt="" />
+                </div>
+            </div>
+            <div className="">
                 <Alert />
             </div>
             <div className="header_bottom">

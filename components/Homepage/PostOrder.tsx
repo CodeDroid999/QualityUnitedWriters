@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { MdArrowForward } from 'react-icons/md'
 
-export default function Hero() {
+export default function PostYourAssignment() {
     return (
         <div className="sm:px-18 my-4 flex h-[70vh] flex-col-reverse items-center  bg-violet-100  px-4 py-16  lg:px-24 xl:my-10 xl:flex-row  xl:px-36">
             <div className="flex flex-1 flex-col items-center justify-center">

@@ -1,4 +1,4 @@
-import Hero from 'components/Homepage/Hero'
+import Hero from 'components/Homepage/PostOrder'
 import HeroArea from 'components/Homepage/HeroSection'
 import Footer from 'components/layout/Footer'
 import Layout from 'components/layout/layout'
@@ -8,6 +8,7 @@ import { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
 import type { SharedPageProps } from 'pages/_app'
 import React, { useState } from 'react'
+import PostYourAssignment from 'components/Homepage/PostOrder'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -46,7 +47,7 @@ export default function Home(props: PageProps) {
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <HeroArea/>
-      <Hero />
+<PostYourAssignment/>
       <Footer/>
     </>
   )

@@ -7,33 +7,17 @@ import cn from 'classnames'
 
 
 type Props = {
-  preview?: boolean
+    preview?: boolean
 }
 
 const Alert = ({ preview }: Props) => {
-  return (
-    <div className="container-fluid">
-      <div className="contact_link-container">
-        <a href="https://maps.app.goo.gl/RR6QXHVEXpAxqWVz6" className="contact_link1">
-        <FontAwesomeIcon icon={faLocationDot} size="2x" style={{ color: '#e8b602' }} />
-          <span className="pl-2">
-            Nairobi, Kenya </span>
-        </a>
-        <a href="https://wa.me/0719230590" className="contact_link2">
-          <FontAwesomeIcon icon={faPhone} size="2x" style={{ color: '#e8b602' }} />
-          <span className="pl-2">
-            Call : (+254) 719 230590
-          </span>
-        </a>
-        <a href="mailto:sledgeentertainment8@gmail.com" className="contact_link3">
-          <FontAwesomeIcon icon={faEnvelope} size="2x" style={{ color: '#e8b602' }} />
-          <span className="pl-2">
-            sledgeentertainment8@gmail.com
-          </span>
-        </a>
-      </div>
-    </div>
-  )
+    return (
+            <div className="items-right text-right bg-gray-300">
+                <a href="/refer-a-friend" className="text-right pr-4 text-green-950 ">
+                                            Earn: Refer a friend          
+                </a>
+            </div>
+    )
 }
 
 export default Alert
