@@ -17,7 +17,7 @@ const CustomNavbar = () => {
   return (
     <div className="m-auto flex max-w-[1100px] items-center justify-between p-2 lg:p-3">
       {/**Mobile Nav */}
-      <MobileNavbar/>
+      <MobileNavbar />
 
       {/**Desktop */}
       <div className="flex flex-grow  w-full  justify-between font-semibold lg:flex">
@@ -29,9 +29,7 @@ const CustomNavbar = () => {
                   <Image
                     src={logo}
                     alt="task"
-                    width={200}
-                    height={100}
-                    className="h-[50px] w-[100%] md:h-[50px] lg:h-[60px] lg:w-[50px]"
+                    className="h-[150px] w-[100%] md:h-[150px] lg:h-[60px] lg:w-[50px]"
                   />
                 </div>
               </Link>

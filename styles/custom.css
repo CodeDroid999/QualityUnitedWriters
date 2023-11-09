@@ -406,7 +406,7 @@ a:focus {
 
 .slider_section ol.carousel-indicators {
   margin: 0;
-  bottom: -75px;
+  bottom: -55px;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;

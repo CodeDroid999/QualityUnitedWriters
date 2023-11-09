@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 import NavigationMenu from './NavMenu';
-import logo from 'public/logo.png'
+import logo from 'public/QualityUnitedWritersLogo.png'
 
 
 const MobileNavbar = () => {
@@ -29,7 +29,7 @@ const MobileNavbar = () => {
                 alt="task"
                 width={130}
                 height={60}
-                className="h-[40px] w-[100%] md:h-[50px] lg:h-[60px] lg:w-[50px]"
+                className="h-[60px] w-[100%]"
                 id="customfontsize"
               />
             </div>

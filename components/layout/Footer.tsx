@@ -2,7 +2,7 @@ import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-
+import logo from 'public/QualityUnitedWritersLogo.png'
 import photo1 from "../../public/american-express.png"
 import photo2 from "../../public/mastercard.png"
 import photo4 from "../../public/paypal.png"
@@ -13,46 +13,49 @@ export default function Footer() {
     <div>
       <footer className="mx-4 rounded-2xl bg-gray-200 px-2 py-2">
         <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-20">
-          <div className="grid grid-cols-8 gap-2 md:grid-cols-4 lg:grid-cols-8">
-            <div className="md:col-span-1">
-              <h4 className="font-semibold text-green-900">Discover</h4>
+          <div className="row flex justify-center md:space-x-6 space-y-3 ">
+            <div className="row space-x-2">
+              <div className=" font-semibold text-green-900">
+                Home
+              </div>
+              <div className=" font-semibold text-green-900">
+                How it works
+              </div>
+              <div className=" font-semibold text-green-900">
+                Help
+              </div>
+              <div className=" font-semibold text-green-900">
+                Refer a friend
+              </div>
+            </div>
+            <div className="row space-x-2">
+              <div className=" font-semibold text-green-900">
+                Sign up
+              </div>
+              <div className=" font-semibold text-green-900">
+                Sign in
+              </div>
+              <div className=" font-semibold text-green-900">
+                Blog
+              </div>
+              <div className=" font-semibold text-green-900">
+                Contact us
+              </div>
             </div>
 
-            <div className="md:col-span-1">
-              <h4 className="font-semibold text-green-900">Company</h4>
-            </div>
-
-
-            <div className="col-span-1">
-
-              <h4 className="font-semibold text-green-900">Popular Services</h4>
-
-
-            </div>
-
-            <div className="col-span-1 ">
-              <h4 className="font-semibold text-green-900">Popular locations</h4>
-
-
-            </div>
-            <div className="md:col-span-1">
-              <h4 className="font-semibold text-green-900">Discover</h4>
-            </div>
-            <div className="md:col-span-1">
-              <h4 className="font-semibold text-green-900">Discover</h4>
-            </div>
-            <div className="md:col-span-1">
-              <h4 className="font-semibold text-green-900">Discover</h4>
-            </div>
-            <div className="md:col-span-1">
-              <h4 className="font-semibold text-green-900">Discover</h4>
-            </div>
           </div>
           <div className="mt-2 grid gap-y-2 sm:mt-6 sm:flex sm:items-center sm:justify-center sm:gap-y-0">
             <div className="flex flex-col items-center justify-center">
-              <p className=" font-bold text-sm text-green-900 pr-2">
-                Join us on
-              </p>
+              <div className="mb-1">
+                <Image
+                  src={logo}
+                  alt="task"
+                  width={130}
+                  height={60}
+                  className="h-[60px] w-[100%]"
+                  id="customfontsize"
+                />
+              </div>
               <p className="font-bold text-sm text-green-900">
                 © 2022 QualityUnitedWriters. All rights reserved.
               </p>
@@ -62,11 +65,12 @@ export default function Footer() {
           <div className="mt-2 grid gap-y-2 sm:mt-6 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
             <div className="flex flex-col items-center justify-between">
               <div>
-                <p className=" font-bold text-sm text-green-900 pr-2 pb-2">
+
+                <p className=" font-bold text-sm text-center text-green-900 pr-2 pb-2">
                   Join us on
                 </p>
               </div>
-              <div>
+              <div className="space-x-2">
                 <a
                   className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white  focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
                   href=""
