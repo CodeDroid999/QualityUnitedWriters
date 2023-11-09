@@ -13,7 +13,7 @@ export default function Footer() {
     <div>
       <footer className="mx-4 rounded-2xl bg-gray-200 px-2 py-2">
         <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-20">
-          <div className="row flex justify-center md:space-x-6 space-y-3 ">
+          <div className="row flex justify-center md:space-x-6 space-y-3 md:space-y-0">
             <div className="row space-x-2">
               <div className=" font-semibold text-green-900">
                 Home
@@ -66,7 +66,7 @@ export default function Footer() {
             <div className="flex flex-col items-center justify-between">
               <div>
 
-                <p className=" font-bold text-sm text-center text-green-900 pr-2 pb-2">
+                <p className=" font-bold text-sm text-center text-green-900 pr-2 pb-2 ">
                   Join us on
                 </p>
               </div>
