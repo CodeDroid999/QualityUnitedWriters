@@ -36,10 +36,7 @@ export default function Layout({ children }) {
           name="description"
           content="Post your task for free | Earn money as a tasker| Discover how Airtaska works | Trusted ratings and reviews| Insurance for peace of mind | Join Airtaska today!"
         />
-        <link
-          href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
-          rel="stylesheet"
-        />
+        
       </Head>
       <CustomNavbar/>
       <main className="mt-20 lg:mt-24">{children}</main>

@@ -5,6 +5,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import MobileNavbar from './MobileNav';
+import logo from 'public/logo.png'
 
 
 const CustomNavbar = () => {
@@ -26,7 +27,7 @@ const CustomNavbar = () => {
               <Link href="/" className="text-gray-700">
                 <div className="mb-1">
                   <Image
-                    src="https://i.postimg.cc/FRXRmLQ5/log.png"
+                    src={logo}
                     alt="task"
                     width={200}
                     height={100}
