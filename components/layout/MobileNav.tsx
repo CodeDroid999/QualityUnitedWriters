@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 import NavigationMenu from './NavMenu';
+import logo from 'public/logo.png'
 
 
 const MobileNavbar = () => {
@@ -24,7 +25,7 @@ const MobileNavbar = () => {
           <Link href="/" className="text-gray-700">
             <div className="mb-1">
               <Image
-                src="https://i.postimg.cc/FRXRmLQ5/log.png"
+                src={logo}
                 alt="task"
                 width={130}
                 height={60}

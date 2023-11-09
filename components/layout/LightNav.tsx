@@ -4,6 +4,8 @@ import Link from 'next/link';
 import React from 'react';
 import { useState } from 'react';
 import MobileNavbar from './MobileNav';
+import logo from 'public/logo.png'
+
 
 
 const LightCustomNavbar = () => {
@@ -25,7 +27,7 @@ const LightCustomNavbar = () => {
               <Link href="/" className="text-gray-700">
                 <div className="mb-1">
                   <Image
-                    src="https://i.postimg.cc/XNkwcFKP/favicon.png"
+                   src={logo}
                     alt="task"
                     width={200}
                     height={100}
