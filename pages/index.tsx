@@ -1,5 +1,6 @@
 import HeroArea from 'components/Homepage/HeroSection'
 import PostYourAssignment from 'components/Homepage/PostYourAssignment'
+import StatsCounter from 'components/Homepage/StatsCounter'
 import Footer from 'components/layout/Footer'
 import Layout from 'components/layout/layout'
 import { readToken } from 'lib/sanity.api'
@@ -46,6 +47,7 @@ export default function Home(props: PageProps) {
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <HeroArea />
+      <StatsCounter/>
       <PostYourAssignment />
       <Footer />
     </>
