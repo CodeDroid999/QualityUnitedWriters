@@ -165,7 +165,7 @@ export default function CompleteAccount() {
                 htmlFor="mainGoal"
                 className="mb-2 text-lg font-medium text-gray-700"
               >
-                What is your main goal on Airtaska?
+                What is your main goal?
               </label>
               <div className="mt-2 flex w-full flex-row space-x-2">
                 <div
@@ -177,7 +177,7 @@ export default function CompleteAccount() {
                 >
                   <div className="flex h-full flex-col items-center justify-center ">
                     <BsCheckCircle size={20} className="mb-1" />
-                    Get things done
+                    Student: Get assignment help
                   </div>
                 </div>
                 <div
@@ -189,7 +189,7 @@ export default function CompleteAccount() {
                 >
                   <div className="flex h-full flex-col items-center justify-center ">
                     <BsCurrencyDollar size={20} className="mb-1" />
-                    Earn money
+                    Tutor: Offer assignment help
                   </div>
                 </div>
               </div>
