@@ -5,7 +5,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import MobileNavbar from './MobileNav';
-import logo from 'public/logo.png'
+import logo from 'public/QualityUnitedWritersLogo.png'
 
 
 const CustomNavbar = () => {
@@ -47,35 +47,35 @@ const CustomNavbar = () => {
             href="/"
             className="font-medium text-white hover:text-green-500"
           >
-            HOME
+            Home
           </Link>
 
           <Link
             href="/about"
             className="font-medium text-white hover:text-green-500"
           >
-            ABOUT
+            How it works
           </Link>
           <Link
             href="/services"
             className="font-medium text-white hover:text-green-500"
           >
-            SERVICES
+            Sign in
           </Link> <Link
             href="/projects"
             className="font-medium text-white hover:text-green-500"
           >
-            PROJECTS          </Link> <Link
+            Sign up      </Link> <Link
               href="/blog"
               className="font-medium text-white hover:text-green-500"
             >
-            BLOG
+            Blog
           </Link>
           <Link
             href="/contact-us"
             className="font-medium text-white hover:text-green-500"
           >
-            CONTACT US
+            Contact us
           </Link>
         </div>
       </div>
