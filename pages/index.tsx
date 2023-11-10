@@ -1,5 +1,6 @@
 import HeroArea from 'components/Homepage/HeroSection'
 import PostYourAssignment from 'components/Homepage/PostYourAssignment'
+import ReferFriends from 'components/Homepage/ReferFriensSection.tsx'
 import StatsCounter from 'components/Homepage/StatsCounter'
 import Footer from 'components/layout/Footer'
 import Layout from 'components/layout/layout'
@@ -49,6 +50,7 @@ export default function Home(props: PageProps) {
       <HeroArea />
       <StatsCounter/>
       <PostYourAssignment />
+      <ReferFriends/>
       <Footer />
     </>
   )
