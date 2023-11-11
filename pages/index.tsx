@@ -1,4 +1,5 @@
 import HeroArea from 'components/Homepage/HeroSection'
+import HowItWorksSection from 'components/Homepage/HowITWorksSection'
 import PostYourAssignment from 'components/Homepage/PostYourAssignment'
 import ReferFriends from 'components/Homepage/ReferFriensSection.tsx'
 import StatsCounter from 'components/Homepage/StatsCounter'
@@ -52,7 +53,7 @@ export default function Home(props: PageProps) {
       <StatsCounter/>
       <PostYourAssignment />
       <ReferFriends/>
-      <Steps/>
+      <HowItWorksSection />
       <Footer />
     </>
   )
