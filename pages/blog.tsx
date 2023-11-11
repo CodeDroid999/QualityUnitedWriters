@@ -1,3 +1,4 @@
+import Layout from 'components/Authedlayout/layout'
 import IndexPage from 'components/IndexPage'
 import PreviewIndexPage from 'components/PreviewIndexPage'
 import { readToken } from 'lib/sanity.api'
@@ -22,7 +23,7 @@ export default function Blog (props: PageProps) {
     return <PreviewIndexPage posts={posts} settings={settings} />
   }
 
-  return <IndexPage posts={posts} settings={settings} />
+  return <Layout><IndexPage posts={posts} settings={settings} /></Layout>
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
