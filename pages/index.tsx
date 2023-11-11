@@ -1,3 +1,4 @@
+import AssignmentTable from 'components/BrowseTasks/AssignmentTable'
 import HeroArea from 'components/Homepage/HeroSection'
 import HowItWorksSection from 'components/Homepage/HowITWorksSection'
 import PostYourAssignment from 'components/Homepage/PostYourAssignment'
@@ -52,6 +53,9 @@ export default function Home(props: PageProps) {
       <HeroArea />
       <StatsCounter/>
       <PostYourAssignment />
+      <div className="container pb-3">
+        <AssignmentTable/>
+      </div>
       <ReferFriends/>
       <HowItWorksSection />
       <Footer />
