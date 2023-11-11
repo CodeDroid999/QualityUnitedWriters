@@ -1,4 +1,4 @@
-import AssignmentTable from 'components/BrowseTasks/AssignmentTable'
+import AssignmentTable from 'components/BrowseAssignments/AssignmentTable'
 import HeroArea from 'components/Homepage/HeroSection'
 import HowItWorksSection from 'components/Homepage/HowITWorksSection'
 import PostYourAssignment from 'components/Homepage/PostYourAssignment'

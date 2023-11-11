@@ -45,27 +45,8 @@ export default function Signup() {
       const result = await signInWithPopup(auth, provider)
       const user = result.user
       const userRef = await addDoc(collection(db, 'users'), {
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
-        phoneNumber: '',
-        profilePicture: '',
-        billingAddress: '',
-        mainRole: '',
-        role: '',
         email: user.email,
         userId: user.uid,
-        bankAccount: {
-          accountHolderName: '',
-          accountNumber: '',
-          BSB: '',
-        },
-        aboutDescription: '',
-        postalCode: '',
-        tag: '',
-        city: '',
-        skills: [],
-        education: [],
         createdAt: serverTimestamp(),
       })
     } catch (error) {

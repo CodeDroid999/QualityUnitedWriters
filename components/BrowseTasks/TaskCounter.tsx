@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AssignmentCount = ({ assignments }) => {
+const TaskCounter = ({ assignments }) => {
   const countLiveProjects = assignments.length;
 
   return (
@@ -8,4 +8,4 @@ const AssignmentCount = ({ assignments }) => {
   );
 };
 
-export default AssignmentCount;
+export default TaskCounter;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AssignmentCount from './AssignmentCount';
+import TaskCounter from './TaskCounter';
 
 const assignmentsData = [
   { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/11/2023", bids: 41 },
@@ -21,7 +21,7 @@ const assignmentsData = [
   // ... other assignment objects
 ];
 
-const AssignmentTable = () => {
+const TasksTable = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
@@ -62,7 +62,7 @@ const AssignmentTable = () => {
         </table>
         <div className="flex w-full flex-col justify-center">
           <div className="assignment-counter text-blue-900">
-          <AssignmentCount assignments={filteredData} />
+          <TaskCounter assignments={filteredData} />
           </div>
           <div className="pagination space-x-2 flex justify-center">
             {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, index) => (
@@ -77,4 +77,4 @@ const AssignmentTable = () => {
   );
 };
 
-export default AssignmentTable;
+export default TasksTable;

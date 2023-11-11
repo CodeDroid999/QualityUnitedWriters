@@ -1,4 +1,4 @@
-import AssignmentTable from 'components/BrowseTasks/AssignmentTable'
+import AssignmentTable from 'components/BrowseAssignments/AssignmentTable'
 import HeroArea from 'components/Homepage/HeroSection'
 import HowItWorksSection from 'components/Homepage/HowITWorksSection'
 import PostYourAssignment from 'components/Homepage/PostYourAssignment'
@@ -27,7 +27,7 @@ export default function Home(props: PageProps) {
   const { posts, settings, draftMode } = props
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>
           QualityUnitedWriters - Your Academic Research and Project Partner
@@ -50,14 +50,13 @@ export default function Home(props: PageProps) {
         <meta name="og:image" property="og:image" content="public/airtaskalogo.jpeg" />
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
-      <PostYourAssignment />
       <div className="container pb-3">
+        <p className="p-1 bg-green-400 text-white">My Assignments | Pending | Reviewed | Post new +</p>
         <AssignmentTable/>
       </div>
-      <ReferFriends/>
+      <PostYourAssignment />
       <HowItWorksSection />
-      <Footer />
-    </>
+    </Layout>
   )
 }
 
