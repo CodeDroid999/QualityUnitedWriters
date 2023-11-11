@@ -2,10 +2,10 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
+import logo from 'public/QualityUnitedWritersLogo.png'
 import React, { useState } from 'react';
 
 import NavigationMenu from './NavMenu';
-import logo from 'public/QualityUnitedWritersLogo.png'
 
 
 const MobileNavbar = () => {

@@ -35,7 +35,7 @@ export default function LogIn() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        router.push(redirect || '/')
+        router.push(redirect || '/home')
         toast.success('Logged In')
       }
     })

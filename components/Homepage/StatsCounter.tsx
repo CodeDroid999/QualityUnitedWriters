@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CountUp from 'react-countup';
-import { useInView } from 'react-intersection-observer';
 
 const StatsCounter = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-  });
-
   const [startAnimation, setStartAnimation] = useState(false);
 
-  const onInView = (inView: boolean) => {
-    if (inView) {
-      setStartAnimation(true);
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = document.getElementById('statsCounter');
+
+      if (element) {
+        const bounding = element.getBoundingClientRect();
+        if (bounding.top < window.innerHeight && bounding.bottom >= 0) {
+          setStartAnimation(true);
+          window.removeEventListener('scroll', handleScroll);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <div ref={ref} className={`flex justify-center items-center space-x-4 p-4 ${startAnimation ? 'animate' : ''}`}>
+    <div id="statsCounter" className={`flex justify-center items-center space-x-4 p-4 ${startAnimation ? 'animate' : ''}`}>
       <div className="text-center">
         <h2 className="text-3xl font-bold">
           <CountUp end={48777} duration={2} start={startAnimation ? null : undefined} />
