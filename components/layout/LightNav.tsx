@@ -66,7 +66,7 @@ const LightCustomNavbar = () => {
             className="px-2 py-1 font-medium text-gray-700 hover:bg-gray-200"
           >
             PROJECTS          </Link> <Link
-              href="/blog"
+              href="/signup"
               className="px-2 py-1 font-medium text-gray-700 hover:bg-gray-200"
             >
             BLOG

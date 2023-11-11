@@ -83,6 +83,17 @@ body {
           flex-direction: column;
   position: relative;
 }
+.hero_area1 {
+  min-height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
 
 .hero_bg_box {
   position: absolute;

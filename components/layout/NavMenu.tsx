@@ -11,17 +11,17 @@ const NavigationMenu: React.FC = () => {
           </Link>
         </li>
         <li className="nav-item p-2">
-          <Link href="/about" passHref>
+          <Link href="/how-it-works" passHref>
             <span className="nav-link  pl-3">How it works</span>
           </Link>
         </li>
         <li className="nav-item p-2">
-          <Link href="/services" passHref>
+          <Link href="/login" passHref>
             <span className="nav-link pl-3">Sign in</span>
           </Link>
         </li>
         <li className="nav-item p-2">
-          <Link href="/projects" passHref>
+          <Link href="/signup" passHref>
             <span className="nav-link pl-3">Sign up +</span>
           </Link>
         </li>

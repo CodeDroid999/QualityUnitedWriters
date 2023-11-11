@@ -11,7 +11,7 @@ import photo3 from "../../public/visa.png"
 export default function Footer() {
   return (
     <div>
-      <footer className="mx-4 rounded-2xl bg-gray-200 px-2 py-2">
+      <footer className="md:m-4 md:rounded-2xl bg-gray-200 px-2 py-2">
         <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-20">
           <div className="row flex justify-center md:space-x-6 space-y-3 md:space-y-0">
             <div className="row space-x-2">
