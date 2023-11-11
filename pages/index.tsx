@@ -2,6 +2,7 @@ import HeroArea from 'components/Homepage/HeroSection'
 import PostYourAssignment from 'components/Homepage/PostYourAssignment'
 import ReferFriends from 'components/Homepage/ReferFriensSection.tsx'
 import StatsCounter from 'components/Homepage/StatsCounter'
+import Steps from 'components/Howitworks/Steps'
 import Footer from 'components/layout/Footer'
 import Layout from 'components/layout/layout'
 import { readToken } from 'lib/sanity.api'
@@ -51,6 +52,7 @@ export default function Home(props: PageProps) {
       <StatsCounter/>
       <PostYourAssignment />
       <ReferFriends/>
+      <Steps/>
       <Footer />
     </>
   )

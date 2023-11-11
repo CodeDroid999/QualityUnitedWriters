@@ -1,6 +1,7 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cn from 'classnames'
+import Link from 'next/link';
 
 
 type Props = {
@@ -9,11 +10,11 @@ type Props = {
 
 const Alert = ({ preview }: Props) => {
     return (
-            <div className="items-right text-right bg-gray-300">
-                <a href="/refer-a-friend" className="text-right pt-1 pb-1 pr-4 text-green-950 ">
-                                            Earn: Refer a friend        <span><FontAwesomeIcon icon={faArrowRight} size="1x" style={{ color: '#fff' }} beatFade /></span>  
-                </a>
-            </div>
+        <div className="items-right text-right bg-gray-300">
+            <Link href="/refer-a-friend" className="text-right pt-1 pb-1 pr-4 text-green-950 ">
+                Earn: Refer a friend        
+            </Link>
+        </div>
     )
 }
 

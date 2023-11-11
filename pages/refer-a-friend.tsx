@@ -1,7 +1,6 @@
-// ReferAFriend.tsx
 
-import SideNav from 'components/layout/SideNav';
 import Layout from 'components/layout/layout';
+import SideNav from 'components/layout/SideNav';
 import React from 'react';
 
 const ReferAFriend: React.FC = () => {
