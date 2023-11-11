@@ -37,8 +37,8 @@ const AssignmentTable = () => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
-    <div className='container bg-blue-900'>
-      <p className="bg-blue-900 w-full pl-2 text-white">Make Money by Helping with Homework</p>
+    <div className='border border-blue-800 rounded-xl  pb-3'>
+      <p className="bg-blue-900 w-full p-3 text-white">Make Money by Helping with Homework</p>
       <div className="flex flex-col flex-grow w-full bg-white p-2">
         <table className="w-full">
           <thead>
@@ -52,21 +52,21 @@ const AssignmentTable = () => {
           <tbody className="pt-2 pb-2">
             {currentRows.map((row, index) => (
               <tr key={row.id} className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}>
-                <td>{row.summary}</td>
-                <td>{row.price}</td>
-                <td>{row.dueDate}</td>
-                <td>{row.bids}</td>
+              <td className="pl-2 pt-1 pb-1">{row.summary}</td>
+              <td className="text-center">{row.price}</td>
+              <td className="text-center">{row.dueDate}</td>
+              <td className="text-center">{row.bids}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="flex w-full flex-col justify-center">
-          <div className="assignment-conunter">
+          <div className="assignment-counter text-blue-900">
           <AssignmentCount assignments={filteredData} />
           </div>
-          <div className="pagination">
+          <div className="pagination space-x-2 flex justify-center">
             {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, index) => (
-              <button key={index + 1} onClick={() => paginate(index + 1)}>
+              <button className="bg-yellow-500 px-2" key={index + 1} onClick={() => paginate(index + 1)}>
                 {index + 1}
               </button>
             ))}
