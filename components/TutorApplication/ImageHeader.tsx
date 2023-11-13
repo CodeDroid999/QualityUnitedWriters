@@ -1,26 +1,21 @@
-import Image from 'next/image';
+import Home from 'components/layout/HomeSection';
+import CustomNavbar from 'components/layout/Navbar';
+import Image from 'next/image'
+import HeroBackground from  "public/become_tutor_bg_2.jpg"
+import React from 'react';
 
 const ImageHeader = () => {
-  const title = '<h1 class="text-4xl font-bold">Background Info</h1>';
-  const imageUrl = '/your-image-url.jpg';
-
-  return (
-    <div className="relative h-screen">
-      <div className="relative h-full">
-        <Image
-          src={imageUrl}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          alt="Background Image"
-        />
-      </div>
-      <div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white"
-        dangerouslySetInnerHTML={{ __html: title }}
-      ></div>
-    </div>
-  );
+    return (
+            <div className="hero_bg_box h-50">
+                <div className="img-box">
+                <Image
+                    src={HeroBackground}
+                    alt="task"
+                    
+                  />
+                </div>
+            </div>
+    );
 };
 
 export default ImageHeader;

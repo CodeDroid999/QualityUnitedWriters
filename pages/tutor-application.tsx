@@ -12,6 +12,7 @@ import AuthLayout from 'components/layout/AuthLayout'
 import Link from 'next/link'
 import Image from 'next/image'
 import Logo from 'public/QualityUnitedWritersLogo.png'
+import ImageHeader from 'components/TutorApplication/ImageHeader'
 export default function PostTask() {
   const [step, setStep] = useState(1)
   const clearData = useFormStore((state) => state.clearStore)
@@ -39,8 +40,8 @@ export default function PostTask() {
     router.push('/')
   }
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-3">
-      <header className="flex flex-row  justify-between items-center bg-white  py-2 ">
+    <div>
+      <header className="flex flex-row  justify-between items-center bg-white  px-4 ">
         <div className="flex flex-row items-center">
           <div className="mr-1">
             <h1 className="text-4xl font-bold">
@@ -65,17 +66,19 @@ export default function PostTask() {
           </div>
         </div>
       </header>
-      <div className="mx-auto mt-10 max-w-[600px]">
-        {step === 1 && <Step1 handleNextStep={handleNextStep} />}
-        {step === 2 && (
-          <Step2
-            handleNextStep={handleNextStep}
-            handlePreviousStep={handlePreviousStep}
-          />
-        )}
-        {step === 3 && <Step3 handlePreviousStep={handlePreviousStep} />}
+      <div className="mx-auto w-full max-w-[1200px] px-3">
+        <ImageHeader />
+        <div className="mx-auto mt-20 min-w-100">
+          {step === 1 && <Step1 handleNextStep={handleNextStep} />}
+          {step === 2 && (
+            <Step2
+              handleNextStep={handleNextStep}
+              handlePreviousStep={handlePreviousStep}
+            />
+          )}
+          {step === 3 && <Step3 handlePreviousStep={handlePreviousStep} />}
+        </div>
       </div>
     </div>
-
   )
 }
