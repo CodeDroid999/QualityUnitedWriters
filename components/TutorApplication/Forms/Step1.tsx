@@ -100,10 +100,40 @@ export default function Step1({ handleNextStep }: Props) {
                         </select>
 
                     </div>
-                    <div className="flex col-md-7 flex-col items-center justiy-center">
+                    <div className="flex col-md-7 flex-col items-center justify-center">
                         <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
                             You will need to prove nationality with a valid photo ID at a later step in this application
                         </p>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="flex col-md-4 flex-col">
+                        <label
+                            htmlFor="firstName"
+                            className="mb-2 text-sm font-medium text-gray-700"
+                        >
+                            First Name
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="e.g John"
+                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                  font-medium outline-none focus:border-blue-500`}
+                        />
+                    </div>
+                    <div className="flex col-md-4 flex-col">
+                        <label
+                            htmlFor="lastName"
+                            className="mb-2 text-sm font-medium text-gray-700"
+                        >
+                            Last Name
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="e.g Doe"
+                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                  font-medium outline-none focus:border-blue-500`}
+                        />
                     </div>
                 </div>
 
