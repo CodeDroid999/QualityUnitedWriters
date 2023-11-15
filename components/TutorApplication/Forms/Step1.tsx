@@ -20,6 +20,8 @@ import Head from 'next/head'
 interface Props {
     handleNextStep: () => void
 }
+
+
 export default function Step1({ handleNextStep }: Props) {
     const [firstName, setFirstName] = useState('')
     const [firstNameError, setFirstNameError] = useState('')
@@ -57,8 +59,10 @@ export default function Step1({ handleNextStep }: Props) {
     const setData = useFormStore((state) => state.setStep1Data)
 
     const handleNext = async (event: any) => {
+
         event.preventDefault()
         let hasError = false
+
         if (!firstName) {
             setFirstNameError('This field is required')
             hasError = true
@@ -113,6 +117,18 @@ export default function Step1({ handleNextStep }: Props) {
             hasError = true
         } else {
             setMajorError('')
+        }
+        // Validation for "Academic Experience" section
+        const teacherRadio = event.target['teacher-radio'].value;
+        if (teacherRadio !== 'Yes' && teacherRadio !== 'No') {
+            toast.error('Please select whether you have been a school teacher.');
+            hasError = true;
+        }
+
+        const affiliationRadio = event.target['affiliation-radio'].value;
+        if (affiliationRadio !== 'Yes' && affiliationRadio !== 'No') {
+            toast.error('Please select whether you have other professional affiliation with an academic institution.');
+            hasError = true;
         }
         if (!role) {
             setRoleError('This field is required')
@@ -340,7 +356,7 @@ export default function Step1({ handleNextStep }: Props) {
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                         {schoolError && (
+                        {schoolError && (
                             <span className="text-red-500">{schoolError}</span>
                         )}
                     </div>
@@ -360,7 +376,7 @@ export default function Step1({ handleNextStep }: Props) {
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                          {schoolError && (
+                        {schoolError && (
                             <span className="text-red-500">{schoolError}</span>
                         )}
                     </div>
@@ -380,7 +396,7 @@ export default function Step1({ handleNextStep }: Props) {
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                          {majorError && (
+                        {majorError && (
                             <span className="text-red-500">{majorError}</span>
                         )}
                     </div>
@@ -440,7 +456,8 @@ export default function Step1({ handleNextStep }: Props) {
                         </label>
                         <input
                             type="text"
-                            placeholder="Your Job Title" className={`rounded-lg border bg-gray-50 px-1 py-2
+                            placeholder="Your Job Title"
+                            className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
                     </div>
