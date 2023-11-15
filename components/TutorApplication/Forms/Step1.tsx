@@ -1,8 +1,5 @@
-import React, { useState } from 'react'
-import useFormStore from 'store/store'
-import countryList from '../countryList'
-import toast from 'react-hot-toast'
-import { useRouter } from 'next/navigation'
+import axios from 'axios'
+import { UserAuth } from 'context/AuthContext'
 import {
     collection,
     doc,
@@ -11,10 +8,14 @@ import {
     updateDoc,
     where,
 } from 'firebase/firestore'
-import { db } from '../../../firebase'
-import { UserAuth } from 'context/AuthContext'
-import axios from 'axios'
 import Head from 'next/head'
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
+import toast from 'react-hot-toast'
+import useFormStore from 'store/store'
+
+import { db } from '../../../firebase'
+import countryList from '../countryList'
 
 
 interface Props {
@@ -52,6 +53,7 @@ export default function Step1({ handleNextStep }: Props) {
     const [employerError, setEmployerError] = useState('');
     const [startDateError, setStartDateError] = useState('');
     const [endDateError, setEndDateError] = useState('');
+
 
     const [dueDate, setDueDate] = useState('')
     const [dueDateError, setDueDateError] = useState('')
@@ -171,13 +173,11 @@ export default function Step1({ handleNextStep }: Props) {
         } else {
             setEndDateError('');
         }
-        if (!role) {
-            setRoleError('This field is required')
-            hasError = true
+        if (!isSchoolTeacher) {
+            setIsSchoolTeacherError('This field is required');
         } else {
-            setRoleError('')
+            setIsSchoolTeacherError('');
         }
-
         if (hasError) {
             return
         }
@@ -411,13 +411,16 @@ export default function Step1({ handleNextStep }: Props) {
                                 />
                                 Yes
                             </label>
+                            {isSchoolTeacherError && (
+                                <span className="text-red-500">{isSchoolTeacherError}</span>
+                            )}
                         </div>
                     </div>
-
                 </div>
 
-                <div className="row">
-                    <div className="flex col-md-4 ">
+
+                <div className="row ">
+                    <div className="flex flex-col col-md-4  ">
                         <label
                             htmlFor="firstName"
                             className="mb-2 text-sm font-medium text-gray-700"
