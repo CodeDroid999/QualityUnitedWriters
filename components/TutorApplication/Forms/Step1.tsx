@@ -40,6 +40,19 @@ export default function Step1({ handleNextStep }: Props) {
     const [role, setRole] = useState('')
     const [selectedMajor, setSelectedMajor] = useState('');
     const [majorError, setMajorError] = useState('');
+    const [isSchoolTeacher, setIsSchoolTeacher] = useState('');
+    const [hasAffiliation, setHasAffiliation] = useState('');
+    const [isSchoolTeacherError, setIsSchoolTeacherError] = useState('');
+    const [hasAffiliationError, setHasAffiliationError] = useState('');
+    const [jobTitle, setJobTitle] = useState('');
+    const [employer, setEmployer] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [jobTitleError, setJobTitleError] = useState('');
+    const [employerError, setEmployerError] = useState('');
+    const [startDateError, setStartDateError] = useState('');
+    const [endDateError, setEndDateError] = useState('');
+
     const [dueDate, setDueDate] = useState('')
     const [dueDateError, setDueDateError] = useState('')
     const [activeRole, setActiveRole] = useState('')
@@ -118,17 +131,45 @@ export default function Step1({ handleNextStep }: Props) {
         } else {
             setMajorError('')
         }
-        // Validation for "Academic Experience" section
-        const teacherRadio = event.target['teacher-radio'].value;
-        if (teacherRadio !== 'Yes' && teacherRadio !== 'No') {
-            toast.error('Please select whether you have been a school teacher.');
+        if (!isSchoolTeacher) {
+            setIsSchoolTeacherError('Please select an option');
             hasError = true;
+        } else {
+            setIsSchoolTeacherError('');
         }
 
-        const affiliationRadio = event.target['affiliation-radio'].value;
-        if (affiliationRadio !== 'Yes' && affiliationRadio !== 'No') {
-            toast.error('Please select whether you have other professional affiliation with an academic institution.');
+        if (!hasAffiliation) {
+            setHasAffiliationError('Please select an option');
             hasError = true;
+        } else {
+            setHasAffiliationError('');
+        }
+        if (!jobTitle) {
+            setJobTitleError('This field is required');
+            hasError = true;
+        } else {
+            setJobTitleError('');
+        }
+
+        if (!employer) {
+            setEmployerError('This field is required');
+            hasError = true;
+        } else {
+            setEmployerError('');
+        }
+
+        if (!startDate) {
+            setStartDateError('Please select a start date');
+            hasError = true;
+        } else {
+            setStartDateError('');
+        }
+
+        if (!endDate) {
+            setEndDateError('Please select an end date');
+            hasError = true;
+        } else {
+            setEndDateError('');
         }
         if (!role) {
             setRoleError('This field is required')
@@ -343,46 +384,40 @@ export default function Step1({ handleNextStep }: Props) {
                     Education
                 </p>
                 <div className="row">
-                    <div className="flex col-md-4 flex-col">
-                        <label
-                            htmlFor="firstName"
-                            className="mb-2 text-sm font-medium text-gray-700"
-                        >
-                            Which school did you go to?
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Find your school"
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
-                  font-medium outline-none focus:border-blue-500`}
-                        />
-                        {schoolError && (
-                            <span className="text-red-500">{schoolError}</span>
-                        )}
+                    <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
+                        <div className="question col-md-8">
+                            Have you ever been a school teacher?
+                        </div>
+                        <div className="flex items-right space-x-4">
+                            <label className="flex items-center">
+                                <input
+                                    type="radio"
+                                    name="teacher-radio"
+                                    value="No"
+                                    className="mr-2"
+                                    checked={isSchoolTeacher === 'No'}
+                                    onChange={() => setIsSchoolTeacher('No')}
+                                />
+                                No
+                            </label>
+                            <label className="flex items-center">
+                                <input
+                                    type="radio"
+                                    name="teacher-radio"
+                                    value="Yes"
+                                    className="mr-2"
+                                    checked={isSchoolTeacher === 'Yes'}
+                                    onChange={() => setIsSchoolTeacher('Yes')}
+                                />
+                                Yes
+                            </label>
+                        </div>
                     </div>
-                    <div className="col-md-1 flex justify-center align-center items-center text-gray-400">
-                        or
-                    </div>
-                    <div className="flex col-md-4 flex-col">
-                        <label
-                            htmlFor="lastName"
-                            className="mb-2 text-sm font-medium text-white-200"
-                        >.
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Manual input"
-                            onChange={(e) => setSelectedSchool(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
-                  font-medium outline-none focus:border-blue-500`}
-                        />
-                        {schoolError && (
-                            <span className="text-red-500">{schoolError}</span>
-                        )}
-                    </div>
+
                 </div>
+
                 <div className="row">
-                    <div className="flex col-md-4 flex-col">
+                    <div className="flex col-md-4 ">
                         <label
                             htmlFor="firstName"
                             className="mb-2 text-sm font-medium text-gray-700"
@@ -415,14 +450,31 @@ export default function Step1({ handleNextStep }: Props) {
                         </div>
                         <div className="flex items-right space-x-4">
                             <label className="flex items-center">
-                                <input type="radio" name="teacher-radio" value="No" className="mr-2" />
+                                <input
+                                    type="radio"
+                                    name="teacher-radio"
+                                    value="No"
+                                    className="mr-2"
+                                    checked={isSchoolTeacher === 'No'}
+                                    onChange={() => setIsSchoolTeacher('No')}
+                                />
                                 No
                             </label>
                             <label className="flex items-center">
-                                <input type="radio" name="teacher-radio" value="Yes" className="mr-2" />
+                                <input
+                                    type="radio"
+                                    name="teacher-radio"
+                                    value="Yes"
+                                    className="mr-2"
+                                    checked={isSchoolTeacher === 'Yes'}
+                                    onChange={() => setIsSchoolTeacher('Yes')}
+                                />
                                 Yes
                             </label>
                         </div>
+                        {isSchoolTeacherError && (
+                            <span className="text-red-500">{isSchoolTeacherError}</span>
+                        )}
                     </div>
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                         <div className="question col-md-8">
@@ -430,26 +482,45 @@ export default function Step1({ handleNextStep }: Props) {
                         </div>
                         <div className="flex items-right space-x-4">
                             <label className="flex items-center">
-                                <input type="radio" name="teacher-radio" value="No" className="mr-2" />
+                                <input
+                                    type="radio"
+                                    name="affiliation-radio"
+                                    value="No"
+                                    className="mr-2"
+                                    checked={hasAffiliation === 'No'}
+                                    onChange={() => setHasAffiliation('No')}
+                                />
                                 No
                             </label>
                             <label className="flex items-center">
-                                <input type="radio" name="teacher-radio" value="Yes" className="mr-2" />
+                                <input
+                                    type="radio"
+                                    name="affiliation-radio"
+                                    value="Yes"
+                                    className="mr-2"
+                                    checked={hasAffiliation === 'Yes'}
+                                    onChange={() => setHasAffiliation('Yes')}
+                                />
                                 Yes
                             </label>
                         </div>
+                        {hasAffiliationError && (
+                            <span className="text-red-500">{hasAffiliationError}</span>
+                        )}
                     </div>
                 </div>
+
                 <p className="text-3xl font-bold text-blue-950">
                     Work Experience
                 </p>
                 <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
                     Note: If unemployed, please write unemployed as your title, n/a for Employer, and the years you have been unemployed.
                 </p>
+
                 <div className="row">
                     <div className="flex col-md-3 flex-col">
                         <label
-                            htmlFor="firstName"
+                            htmlFor="jobTitle"
                             className="mb-2 text-sm font-medium text-gray-700"
                         >
                             Job Title
@@ -457,13 +528,17 @@ export default function Step1({ handleNextStep }: Props) {
                         <input
                             type="text"
                             placeholder="Your Job Title"
+                            onChange={(e) => setJobTitle(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
+                        {jobTitleError && (
+                            <span className="text-red-500">{jobTitleError}</span>
+                        )}
                     </div>
                     <div className="flex col-md-3 flex-col">
                         <label
-                            htmlFor="lastName"
+                            htmlFor="employer"
                             className="mb-2 text-sm font-medium text-gray-700"
                         >
                             Employer/company
@@ -471,13 +546,17 @@ export default function Step1({ handleNextStep }: Props) {
                         <input
                             type="text"
                             placeholder="Employer/company"
+                            onChange={(e) => setEmployer(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
+                        {employerError && (
+                            <span className="text-red-500">{employerError}</span>
+                        )}
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label
-                            htmlFor="lastName"
+                            htmlFor="startDate"
                             className="mb-2 text-sm font-medium text-gray-700"
                         >
                             Years worked
@@ -486,9 +565,12 @@ export default function Step1({ handleNextStep }: Props) {
                             <div className="flex col-md-5 flex-col">
                                 <input
                                     type="date"
-                                    placeholder="2023"
-                                    className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm   font-medium outline-none focus:border-blue-500`}
+                                    onChange={(e) => setStartDate(e.target.value)}
+                                    className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
                                 />
+                                {startDateError && (
+                                    <span className="text-red-500">{startDateError}</span>
+                                )}
                             </div>
                             <div className="col-md-1 flex justify-center align-center items-center text-gray-400">
                                 to
@@ -496,14 +578,16 @@ export default function Step1({ handleNextStep }: Props) {
                             <div className="flex col-md-5 flex-col">
                                 <input
                                     type="date"
-                                    placeholder="2023"
-                                    className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm   font-medium outline-none focus:border-blue-500`}
+                                    onChange={(e) => setEndDate(e.target.value)}
+                                    className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
                                 />
+                                {endDateError && (
+                                    <span className="text-red-500">{endDateError}</span>
+                                )}
                             </div>
                         </div>
                     </div>
                 </div>
-
 
 
 
