@@ -186,31 +186,37 @@ export default function Step1({ handleNextStep }: Props) {
             const q = query(
                 collection(db, 'users'),
                 where('userId', '==', user.userId)
-            )
-            const querySnapshot = await getDocs(q)
-
+            );
+            const querySnapshot = await getDocs(q);
+        
             if (!querySnapshot.empty) {
-                const docSnapshot = querySnapshot.docs[0]
-                const userDocRef = doc(db, 'users', docSnapshot.id)
-                await updateDoc(userDocRef, {
+                const docSnapshot = querySnapshot.docs[0];
+                const userDocRef = doc(db, 'users', docSnapshot.id);
+        
+                // Create an object with form data
+                const formData = {
                     firstName: firstName,
                     lastName: lastName,
-                    mainRole: role,
-                    role: role,
-                })
+                    selectedCountry: selectedCountry,
+                    selectedAddress: selectedAddress,
+                    selectedCity: selectedCity,
+                    selectedState: selectedState,
+                    selectedSchool: selectedSchool,
+                    selectedMajor: selectedMajor,
+                    // Add other form fields as needed
+                };
+        
+                // Update Firestore document with form data
+                await updateDoc(userDocRef, formData);
             }
-            // Make the HTTP request to notify admin that a new user has just signed up
-            const userData = {
-                firstName: firstName,
-                lastName: lastName,
-                mainRole: role,
-                role: role,
-            };
-            handleNextStep()
-            toast.success('Account has been updated')
+        
+            // Assuming handleNextStep and toast.success are handling the UI changes
+            handleNextStep();
+            toast.success('Account has been updated');
         } catch (error) {
-            console.error('Error updating user details:', error.message)
+            console.error('Error updating user details:', error.message);
         }
+        
 
 
 
