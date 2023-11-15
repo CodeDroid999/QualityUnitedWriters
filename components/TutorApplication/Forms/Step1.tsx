@@ -188,11 +188,11 @@ export default function Step1({ handleNextStep }: Props) {
                 where('userId', '==', user.userId)
             );
             const querySnapshot = await getDocs(q);
-        
+
             if (!querySnapshot.empty) {
                 const docSnapshot = querySnapshot.docs[0];
                 const userDocRef = doc(db, 'users', docSnapshot.id);
-        
+
                 // Create an object with form data
                 const formData = {
                     firstName: firstName,
@@ -205,32 +205,20 @@ export default function Step1({ handleNextStep }: Props) {
                     selectedMajor: selectedMajor,
                     // Add other form fields as needed
                 };
-        
+
                 // Update Firestore document with form data
                 await updateDoc(userDocRef, formData);
             }
-        
+
             // Assuming handleNextStep and toast.success are handling the UI changes
             handleNextStep();
             toast.success('Account has been updated');
         } catch (error) {
             console.error('Error updating user details:', error.message);
         }
-        
-
-
-
-
-
-
-
-
-
-
 
     }
 
-    const currentDate = new Date().toISOString().split('T')[0]
 
     return (
         <div className="p-3 bg-white">
