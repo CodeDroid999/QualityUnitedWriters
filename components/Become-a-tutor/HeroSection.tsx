@@ -1,7 +1,7 @@
 import Home from 'components/layout/HomeSection';
 import CustomNavbar from 'components/layout/Navbar';
 import Image from 'next/image'
-import HeroBackground from  "public/main_cover.jpg"
+import HeroBackground from  "public/bg/Become-a-Tutor-cover.jpg"
 import React from 'react';
 
 const HeroArea = () => {
