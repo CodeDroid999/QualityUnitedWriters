@@ -1,18 +1,18 @@
+import AuthLayout from 'components/layout/AuthLayout'
 import Step1 from 'components/TutorApplication/Forms/Step1'
 import Step2 from 'components/TutorApplication/Forms/Step2'
 import Step3 from 'components/TutorApplication/Forms/Step3'
+import ImageHeader from 'components/TutorApplication/ImageHeader'
 import { onAuthStateChanged } from 'firebase/auth'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import Logo from 'public/QualityUnitedWritersLogo.png'
 import React, { useEffect, useState } from 'react'
 import { TfiClose } from 'react-icons/tfi'
 import useFormStore from 'store/store'
 
 import { auth } from '../firebase'
-import AuthLayout from 'components/layout/AuthLayout'
-import Link from 'next/link'
-import Image from 'next/image'
-import Logo from 'public/QualityUnitedWritersLogo.png'
-import ImageHeader from 'components/TutorApplication/ImageHeader'
 export default function PostTask() {
   const [step, setStep] = useState(1)
   const clearData = useFormStore((state) => state.clearStore)
