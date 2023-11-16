@@ -1,4 +1,5 @@
 import React from 'react'
+import HighestEarnerCard from './HighestEarnerCard'
 
 export default function HighestEarners() {
     return (
@@ -9,35 +10,9 @@ export default function HighestEarners() {
                         Highest Earners
                     </h1>
                     <div className="flex justify-center w-full flex-col md:flex-row md:space-x-6">
-                        <div className="col-md-4">
-                            <div className="p2">
-                                <h3 className="text-blue-950 font-semibold uppercase">
-                                    Lowest service fees
-                                </h3>
-                                <p>
-                                    Starting at 20%, Studypool charges the lowest service fees in the market. We like to give our tutors what they earn
-                                </p>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="p2">
-                                <h3 className="text-blue-950 font-semibold uppercase">
-                                    Reliable Income
-                                </h3>
-                                <p>
-                                    Make good money using nothing more than your knowledge and your keyboard.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <h3 className="text-blue-950 font-semibold uppercase whitespace-nowrap">
-                                Freedom and Flexibility
-                            </h3>
-                            <p>
-                                Choose when to work and where you want to work from. There is no boss, no office and no quotas. Create your own Schedule.
-                            </p>
-                        </div>
-
+                     <div>
+                     <HighestEarnerCard/>
+                     </div>
                     </div>
                 </div>
             </div>
