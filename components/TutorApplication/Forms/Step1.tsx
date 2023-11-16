@@ -8,7 +8,6 @@ import {
     updateDoc,
     where,
 } from 'firebase/firestore'
-import Head from 'next/head'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
@@ -16,6 +15,7 @@ import useFormStore from 'store/store'
 
 import { db } from '../../../firebase'
 import countryList from '../countryList'
+
 
 
 interface Props {
@@ -54,22 +54,7 @@ export default function Step1({ handleNextStep }: Props) {
     const [startDateError, setStartDateError] = useState('');
     const [endDateError, setEndDateError] = useState('');
 
-
-    const [dueDate, setDueDate] = useState('')
-    const [dueDateError, setDueDateError] = useState('')
-    const [activeRole, setActiveRole] = useState('')
-    const [roleError, setRoleError] = useState('')
-
     const { user } = UserAuth()
-
-    const router = useRouter()
-
-    const handleRole = (selectedRole: string) => {
-        setActiveRole(selectedRole)
-        setRole(selectedRole)
-    }
-
-
 
     const setData = useFormStore((state) => state.setStep1Data)
 
@@ -211,8 +196,8 @@ export default function Step1({ handleNextStep }: Props) {
             }
 
             // Assuming handleNextStep and toast.success are handling the UI changes
-            handleNextStep();
             toast.success('Account has been updated');
+            handleNextStep();
         } catch (error) {
             console.error('Error updating user details:', error.message);
         }

@@ -1,4 +1,5 @@
 import HeroArea from 'components/Become-a-tutor/HeroSection'
+import HighestEarners from 'components/Become-a-tutor/HighestEarnersSection'
 import HowItWorksSection from 'components/Become-a-tutor/HowITWorksSection'
 import PostYourAssignment from 'components/Become-a-tutor/PostYourAssignment'
 import ReferFriends from 'components/Become-a-tutor/ReferFriensSection.tsx'
@@ -56,6 +57,7 @@ export default function BecomeATutor(props: PageProps) {
       <div className="container pb-3">
         <AssignmentTable/>
       </div>
+      <HighestEarners/>
       <ReferFriends/>
       <HowItWorksSection />
       <Footer />
