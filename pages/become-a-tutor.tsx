@@ -2,9 +2,10 @@ import HeroArea from 'components/Become-a-tutor/HeroSection'
 import HighestEarners from 'components/Become-a-tutor/HighestEarnersSection'
 import HowItWorksSection from 'components/Become-a-tutor/HowITWorksSection'
 import PostYourAssignment from 'components/Become-a-tutor/PostYourAssignment'
-import ReferFriends from 'components/Become-a-tutor/ReferFriensSection.tsx'
+import ReferFriends from 'components/Become-a-tutor/PopularCountriesSection'
 import StatsCounter from 'components/Become-a-tutor/StatsCounter'
 import AssignmentTable from 'components/BrowseAssignments/AssignmentTable'
+import TasksTable from 'components/BrowseTasks/TasksTable'
 import Steps from 'components/Howitworks/Steps'
 import Footer from 'components/layout/Footer'
 import Layout from 'components/layout/layout'
@@ -14,6 +15,7 @@ import { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
 import type { SharedPageProps } from 'pages/_app'
 import React, { useState } from 'react'
+import PopularCountries from 'components/Become-a-tutor/PopularCountriesSection'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -52,14 +54,14 @@ export default function BecomeATutor(props: PageProps) {
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <HeroArea />
-      <StatsCounter/>
+      <StatsCounter />
       <PostYourAssignment />
       <div className="container pb-3">
-        <AssignmentTable/>
+        <TasksTable />
       </div>
-      <HighestEarners/>
-      <ReferFriends/>
+      <HighestEarners />
       <HowItWorksSection />
+      <PopularCountries />
       <Footer />
     </>
   )
