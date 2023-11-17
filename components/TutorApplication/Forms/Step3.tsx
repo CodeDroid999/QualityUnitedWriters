@@ -13,11 +13,9 @@ import useFormStore from 'store/store'
 
 import { db } from '../../../firebase'
 
-interface Props {
-    handlePreviousStep: () => void
-}
 
-export default function Step3({ handlePreviousStep }: Props) {
+
+export default function StepThree() {
     const [budget, setBudget] = useState('')
     const [budgetError, setBudgetError] = useState('')
     const { user } = UserAuth()

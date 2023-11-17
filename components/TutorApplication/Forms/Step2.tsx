@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import useFormStore from 'store/store'
 
-interface Props {
-    handleNextStep: () => void
-    handlePreviousStep: () => void
-}
-export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
+export default function StepTwo() {
     const [description, setDescription] = useState('')
     const [descriptionError, setDescriptionError] = useState('')
 

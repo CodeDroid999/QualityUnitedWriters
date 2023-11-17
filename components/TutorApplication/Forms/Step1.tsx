@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { UserAuth } from 'context/AuthContext'
+import { onAuthStateChanged } from 'firebase/auth'
 import {
     collection,
     doc,
@@ -9,65 +10,57 @@ import {
     where,
 } from 'firebase/firestore'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import router from 'next/router'
+import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import useFormStore from 'store/store'
 
 import { db } from '../../../firebase'
 import countryList from '../countryList'
 
-
-
-interface Props {
-    handleNextStep: () => void
+export const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    const day = date.getDate()
+    const month = date.toLocaleString('en-us', { month: 'short' })
+    const year = date.getFullYear()
+    const suffix =
+        day === 1 || day === 21 || day === 31
+            ? 'st'
+            : day === 2 || day === 22
+                ? 'nd'
+                : day === 3 || day === 23
+                    ? 'rd'
+                    : 'th'
+    return `${day}${suffix} ${month} ${year}`
 }
 
 
-export default function Step1({ handleNextStep }: Props) {
-    const [firstName, setFirstName] = useState('')
-    const [firstNameError, setFirstNameError] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [lastNameError, setLastNameError] = useState('')
+
+
+export default function StepOne() {
+    // Define constants for state variables using useState
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [selectedCountry, setSelectedCountry] = useState('');
-    const [countryError, setCountryError] = useState('');
     const [selectedAddress, setSelectedAddress] = useState('');
-    const [AddressError, setAddressError] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
-    const [cityError, setCityError] = useState('');
     const [selectedState, setSelectedState] = useState('');
-    const [stateError, setStateError] = useState('');
+    const [lastSchoolName, setLastSchoolName] = useState('');
+    const [manualInput, setManualInput] = useState('');
+    const [howHeard, setHowHeard] = useState('');
     const [selectedSchool, setSelectedSchool] = useState('');
-    const [schoolError, setSchoolError] = useState('');
-    const [role, setRole] = useState('')
     const [selectedMajor, setSelectedMajor] = useState('');
-    const [majorError, setMajorError] = useState('');
     const [isSchoolTeacher, setIsSchoolTeacher] = useState('');
     const [hasAffiliation, setHasAffiliation] = useState('');
-    const [isSchoolTeacherError, setIsSchoolTeacherError] = useState('');
-    const [hasAffiliationError, setHasAffiliationError] = useState('');
     const [jobTitle, setJobTitle] = useState('');
     const [employer, setEmployer] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-    const [jobTitleError, setJobTitleError] = useState('');
-    const [employerError, setEmployerError] = useState('');
-    const [startDateError, setStartDateError] = useState('');
-    const [endDateError, setEndDateError] = useState('');
-    const [howHeard, setHowHeard] = useState('')
-    const [howHeardError, setHowHeardError] = useState('')
-    const [lastSchoolName, setLastSchoolName] = useState('');
-    const [manualInput, setManualInput] = useState('');
-    const [lastSchoolNameError, setLastSchoolNameError] = useState('');
-    const [manualInputError, setManualInputError] = useState('');
-
-
-
-    const setData = useFormStore((state) => state.setStep1Data)
-
-    const handleNext = async (event: any) => {
-        event.preventDefault();
+   
+  
+    const validateForm = async () => {
         let hasError = false;
-
+    
         // Validation for firstName
         if (!firstName) {
             setFirstNameError('This field is required');
@@ -75,7 +68,7 @@ export default function Step1({ handleNextStep }: Props) {
         } else {
             setFirstNameError('');
         }
-
+    
         // Validation for lastName
         if (!lastName) {
             setLastNameError('This field is required');
@@ -83,7 +76,7 @@ export default function Step1({ handleNextStep }: Props) {
         } else {
             setLastNameError('');
         }
-
+    
         // Validation for selectedCountry
         if (!selectedCountry) {
             setCountryError('Please select a country. This field is required');
@@ -91,71 +84,130 @@ export default function Step1({ handleNextStep }: Props) {
         } else {
             setCountryError('');
         }
-
-        // Additional validations for other fields...
-
-        // Validate lastSchoolName
-        if (!lastSchoolName) {
-            setLastSchoolNameError('This field is required');
+    
+        // Validation for selectedAddress
+        if (!selectedAddress) {
+            setAddressError('This field is required');
             hasError = true;
         } else {
-            setLastSchoolNameError('');
+            setAddressError('');
         }
-
-        // Validate manualInput
-        if (!manualInput) {
-            setManualInputError('This field is required');
+    
+        // Validation for selectedCity
+        if (!selectedCity) {
+            setCityError('This field is required');
             hasError = true;
         } else {
-            setManualInputError('');
+            setCityError('');
         }
-
-        // Validate howHeard
+    
+        // Validation for selectedState
+        if (!selectedState) {
+            setStateError('This field is required');
+            hasError = true;
+        } else {
+            setStateError('');
+        }
+    
+        // Validation for howHeard
         if (!howHeard.trim()) {
             setHowHeardError('This field is required');
             hasError = true;
         } else {
             setHowHeardError('');
         }
-
-        // Additional validations for other fields...
-
-        // Validate isSchoolTeacher
+    
+        // Validation for lastSchoolName
+        if (!lastSchoolName) {
+            setLastSchoolNameError('This field is required');
+            hasError = true;
+        } else {
+            setLastSchoolNameError('');
+        }
+    
+        // Validation for manualInput
+        if (!manualInput) {
+            setManualInputError('This field is required');
+            hasError = true;
+        } else {
+            setManualInputError('');
+        }
+    
+        // Validation for selectedMajor
+        if (!selectedMajor) {
+            setMajorError('This field is required');
+            hasError = true;
+        } else {
+            setMajorError('');
+        }
+    
+        // Validation for isSchoolTeacher
         if (!isSchoolTeacher) {
             setIsSchoolTeacherError('Please select an option');
             hasError = true;
         } else {
             setIsSchoolTeacherError('');
         }
-
-        // Validate hasAffiliation
+    
+        // Validation for hasAffiliation
         if (!hasAffiliation) {
             setHasAffiliationError('Please select an option');
             hasError = true;
         } else {
             setHasAffiliationError('');
         }
-
-        // Additional validations for other fields...
-
-        // Validate jobTitle
+    
+        // Validation for jobTitle
         if (!jobTitle) {
             setJobTitleError('This field is required');
             hasError = true;
         } else {
             setJobTitleError('');
         }
-
-        // Additional validations for other fields...
-
-        // Your existing validation checks...
-
-        if (hasError) {
-            return;
+    
+        // Validation for employer
+        if (!employer) {
+            setEmployerError('This field is required');
+            hasError = true;
+        } else {
+            setEmployerError('');
         }
+    
+        // Validation for startDate
+        if (!startDate) {
+            setStartDateError('This field is required');
+            hasError = true;
+        } else {
+            setStartDateError('');
+        }
+    
+        // Validation for endDate
+        if (!endDate) {
+            setEndDateError('This field is required');
+            hasError = true;
+        } else {
+            setEndDateError('');
+        }
+    
+        // Additional validations for other fields...
+    
+        if (hasError) {
+            // If there's any error, you might want to handle it here or just return.
+            return false;
+        }
+    
+        // If there are no errors, you can proceed with further actions.
+        return true;
+    };
+    
 
-        // If all validations pass, set data using setData
-        setData({
+
+
+    const handleSave = async (e: any) => {
+        validateForm()
+        e.preventDefault();
+        // Gather form data
+        const formData = {
             firstName,
             lastName,
             selectedCountry,
@@ -173,7 +225,22 @@ export default function Step1({ handleNextStep }: Props) {
             employer,
             startDate,
             endDate,
-        });
+        };
+
+        // Perform actions to save the data (e.g., send it to the server)
+        try {
+            // Add your save logic here
+            // For example, you can use Axios to send a POST request to your server
+            await axios.post('/api/saveFormData', formData);
+
+            // Show success message
+            toast.success('Data saved successfully');
+
+        } catch (error) {
+            // Handle errors
+            console.error('Error saving data:', error);
+            toast.error('Error saving data. Please try again.');
+        }
     };
 
     return (
@@ -200,6 +267,7 @@ export default function Step1({ handleNextStep }: Props) {
                         <input
                             type="text"
                             placeholder="e.g John"
+                            value="firstName"
                             onChange={(e) => setFirstName(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
@@ -513,6 +581,7 @@ export default function Step1({ handleNextStep }: Props) {
                             <div className="flex col-md-5 flex-col">
                                 <input
                                     type="date"
+                                    value={endDate}
                                     onChange={(e) => setEndDate(e.target.value)}
                                     className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
                                 />
@@ -528,10 +597,49 @@ export default function Step1({ handleNextStep }: Props) {
 
                 <div
                     className="mt-4 cursor-pointer rounded-xl bg-green-500 py-2 text-center text-white"
-                    onClick={handleNext}
+                    onClick={handleSave}
                 >
                     Save and continue                </div>
             </form>
         </div>
     )
+}
+
+function setLastNameError(arg0: string) {
+    throw new Error('Function not implemented.')
+}
+
+
+function setCountryError(arg0: string) {
+    throw new Error('Function not implemented.')
+}
+
+
+function setLastSchoolNameError(arg0: string) {
+    throw new Error('Function not implemented.')
+}
+
+
+function setManualInputError(arg0: string) {
+    throw new Error('Function not implemented.')
+}
+
+
+function setHowHeardError(arg0: string) {
+    throw new Error('Function not implemented.')
+}
+
+
+function setIsSchoolTeacherError(arg0: string) {
+    throw new Error('Function not implemented.')
+}
+
+
+function setHasAffiliationError(arg0: string) {
+    throw new Error('Function not implemented.')
+}
+
+
+function setJobTitleError(arg0: string) {
+    throw new Error('Function not implemented.')
 }

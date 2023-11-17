@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react'
 import { TfiClose } from 'react-icons/tfi'
 
 import { auth } from '../../firebase'
+import StepThree from 'components/TutorApplication/Forms/Step3'
 
 
 
@@ -57,7 +58,7 @@ export default function StepOne() {
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
                 <div className="mx-auto mt-20 min-w-100">
-                    <StepOne/>
+                    <StepThree/>
                 </div>
             </div>
         </div>
