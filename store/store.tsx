@@ -9,20 +9,31 @@ type Step1 = {
   selectedCity: string;
   selectedState: string;
   selectedHowHeard: string;
-  isSchoolTeacher: boolean; // Updated to boolean
+  isSchoolTeacher: 'Yes' | 'No'; // Updated to string literal union
   selectedMajor: string;
-  hasAffiliation: boolean; // Updated to boolean
+  hasAffiliation: 'Yes' | 'No'; // Updated to string literal union
   jobTitle: string;
   employer: string;
   startDate: string;
   endDate: string;
 };
 
+type Step2 = {
+  description: string;
+};
+
+type Step3 = {
+  budget: string;
+};
+
 interface Store {
   step1: Step1;
-  // ... other code ...
-  setStep1Data: (step1Data: Partial<Step1>) => void; // Updated to accept Partial<Step1>
-  // ... other code ...
+  step2: Step2;
+  step3: Step3;
+  setStep1Data: (step1Data: Partial<Step1>) => void;
+  setStep2Data: (description: string) => void;
+  setStep3Data: (budget: string) => void;
+  clearStore: () => void;
 }
 
 const useFormStore = create<Store>()(
@@ -36,24 +47,71 @@ const useFormStore = create<Store>()(
         selectedCity: '',
         selectedState: '',
         selectedHowHeard: '',
-        isSchoolTeacher: false, // Default to false
+        isSchoolTeacher: 'No', // Default to 'No'
         selectedMajor: '',
-        hasAffiliation: false, // Default to false
+        hasAffiliation: 'No', // Default to 'No'
         jobTitle: '',
         employer: '',
         startDate: '',
         endDate: '',
       },
-      // ... other code ...
+      step2: {
+        description: '',
+      },
+      step3: {
+        budget: '',
+      },
       setStep1Data: (step1Data) =>
         set((state) => ({
           ...state,
           step1: {
             ...state.step1,
             ...step1Data,
+            isSchoolTeacher: step1Data.isSchoolTeacher === 'Yes' || step1Data.isSchoolTeacher === 'No' ? step1Data.isSchoolTeacher : state.step1.isSchoolTeacher,
+            hasAffiliation: step1Data.hasAffiliation === 'Yes' || step1Data.hasAffiliation === 'No' ? step1Data.hasAffiliation : state.step1.hasAffiliation,
           },
         })),
-      // ... other code ...
+      setStep2Data: (description) =>
+        set((state) => ({
+          ...state,
+          step2: {
+            ...state.step2,
+            description,
+          },
+        })),
+      setStep3Data: (budget) =>
+        set((state) => ({
+          ...state,
+          step3: {
+            ...state.step3,
+            budget,
+          },
+        })),
+      clearStore: () =>
+        set({
+          step1: {
+            firstName: '',
+            lastName: '',
+            selectedCountry: '',
+            selectedAddress: '',
+            selectedCity: '',
+            selectedState: '',
+            selectedHowHeard: '',
+            isSchoolTeacher: 'No',
+            selectedMajor: '',
+            hasAffiliation: 'No',
+            jobTitle: '',
+            employer: '',
+            startDate: '',
+            endDate: '',
+          },
+          step2: {
+            description: '',
+          },
+          step3: {
+            budget: '',
+          },
+        }),
     }),
     {
       name: 'formStore',
