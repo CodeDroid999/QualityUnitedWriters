@@ -4,13 +4,13 @@ import { persist } from 'zustand/middleware';
 type Step1 = {
   firstName: string;
   lastName: string;
-  selectedCountry: string;
-  selectedAddress: string;
-  selectedCity: string;
-  selectedState: string;
-  selectedHowHeard: string;
+  Country: string;
+  Address: string;
+  City: string;
+  State: string;
+  HowHeard: string;
   isSchoolTeacher: 'Yes' | 'No'; // Updated to string literal union
-  selectedMajor: string;
+  Major: string;
   hasAffiliation: 'Yes' | 'No'; // Updated to string literal union
   jobTitle: string;
   employer: string;
@@ -42,13 +42,13 @@ const useFormStore = create<Store>()(
       step1: {
         firstName: '',
         lastName: '',
-        selectedCountry: '',
-        selectedAddress: '',
-        selectedCity: '',
-        selectedState: '',
-        selectedHowHeard: '',
+        Country: '',
+        Address: '',
+        City: '',
+        State: '',
+        HowHeard: '',
         isSchoolTeacher: 'No', // Default to 'No'
-        selectedMajor: '',
+        Major: '',
         hasAffiliation: 'No', // Default to 'No'
         jobTitle: '',
         employer: '',
@@ -92,13 +92,13 @@ const useFormStore = create<Store>()(
           step1: {
             firstName: '',
             lastName: '',
-            selectedCountry: '',
-            selectedAddress: '',
-            selectedCity: '',
-            selectedState: '',
-            selectedHowHeard: '',
+            Country: '',
+            Address: '',
+            City: '',
+            State: '',
+            HowHeard: '',
             isSchoolTeacher: 'No',
-            selectedMajor: '',
+            Major: '',
             hasAffiliation: 'No',
             jobTitle: '',
             employer: '',

@@ -1,6 +1,4 @@
-import axios from 'axios'
 import { UserAuth } from 'context/AuthContext'
-import { onAuthStateChanged } from 'firebase/auth'
 import {
     collection,
     doc,
@@ -9,13 +7,11 @@ import {
     updateDoc,
     where,
 } from 'firebase/firestore'
-import { useRouter } from 'next/navigation'
-import router from 'next/router'
-import React, { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
-import useFormStore from 'store/store'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
+import { toast } from 'react-hot-toast'
 
-import { db } from '../../../firebase'
+import { auth, db } from '../../../firebase'
 import countryList from '../countryList'
 
 export const formatDate = (dateString) => {
@@ -39,186 +35,45 @@ export const formatDate = (dateString) => {
 
 export default function StepOne() {
     // Define constants for state variables using useState
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [selectedCountry, setSelectedCountry] = useState('');
-    const [selectedAddress, setSelectedAddress] = useState('');
-    const [selectedCity, setSelectedCity] = useState('');
-    const [selectedState, setSelectedState] = useState('');
-    const [lastSchoolName, setLastSchoolName] = useState('');
-    const [manualInput, setManualInput] = useState('');
-    const [howHeard, setHowHeard] = useState('');
-    const [selectedSchool, setSelectedSchool] = useState('');
-    const [selectedMajor, setSelectedMajor] = useState('');
-    const [isSchoolTeacher, setIsSchoolTeacher] = useState('');
-    const [hasAffiliation, setHasAffiliation] = useState('');
-    const [jobTitle, setJobTitle] = useState('');
-    const [employer, setEmployer] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-   
-  
-    const validateForm = async () => {
-        let hasError = false;
-    
-        // Validation for firstName
-        if (!firstName) {
-            setFirstNameError('This field is required');
-            hasError = true;
-        } else {
-            setFirstNameError('');
-        }
-    
-        // Validation for lastName
-        if (!lastName) {
-            setLastNameError('This field is required');
-            hasError = true;
-        } else {
-            setLastNameError('');
-        }
-    
-        // Validation for selectedCountry
-        if (!selectedCountry) {
-            setCountryError('Please select a country. This field is required');
-            hasError = true;
-        } else {
-            setCountryError('');
-        }
-    
-        // Validation for selectedAddress
-        if (!selectedAddress) {
-            setAddressError('This field is required');
-            hasError = true;
-        } else {
-            setAddressError('');
-        }
-    
-        // Validation for selectedCity
-        if (!selectedCity) {
-            setCityError('This field is required');
-            hasError = true;
-        } else {
-            setCityError('');
-        }
-    
-        // Validation for selectedState
-        if (!selectedState) {
-            setStateError('This field is required');
-            hasError = true;
-        } else {
-            setStateError('');
-        }
-    
-        // Validation for howHeard
-        if (!howHeard.trim()) {
-            setHowHeardError('This field is required');
-            hasError = true;
-        } else {
-            setHowHeardError('');
-        }
-    
-        // Validation for lastSchoolName
-        if (!lastSchoolName) {
-            setLastSchoolNameError('This field is required');
-            hasError = true;
-        } else {
-            setLastSchoolNameError('');
-        }
-    
-        // Validation for manualInput
-        if (!manualInput) {
-            setManualInputError('This field is required');
-            hasError = true;
-        } else {
-            setManualInputError('');
-        }
-    
-        // Validation for selectedMajor
-        if (!selectedMajor) {
-            setMajorError('This field is required');
-            hasError = true;
-        } else {
-            setMajorError('');
-        }
-    
-        // Validation for isSchoolTeacher
-        if (!isSchoolTeacher) {
-            setIsSchoolTeacherError('Please select an option');
-            hasError = true;
-        } else {
-            setIsSchoolTeacherError('');
-        }
-    
-        // Validation for hasAffiliation
-        if (!hasAffiliation) {
-            setHasAffiliationError('Please select an option');
-            hasError = true;
-        } else {
-            setHasAffiliationError('');
-        }
-    
-        // Validation for jobTitle
-        if (!jobTitle) {
-            setJobTitleError('This field is required');
-            hasError = true;
-        } else {
-            setJobTitleError('');
-        }
-    
-        // Validation for employer
-        if (!employer) {
-            setEmployerError('This field is required');
-            hasError = true;
-        } else {
-            setEmployerError('');
-        }
-    
-        // Validation for startDate
-        if (!startDate) {
-            setStartDateError('This field is required');
-            hasError = true;
-        } else {
-            setStartDateError('');
-        }
-    
-        // Validation for endDate
-        if (!endDate) {
-            setEndDateError('This field is required');
-            hasError = true;
-        } else {
-            setEndDateError('');
-        }
-    
-        // Additional validations for other fields...
-    
-        if (hasError) {
-            // If there's any error, you might want to handle it here or just return.
-            return false;
-        }
-    
-        // If there are no errors, you can proceed with further actions.
-        return true;
-    };
-    
-
-
+    const { user } = UserAuth()
+    const router = useRouter()
+    const userId = router.query?.id
+    const [firstName, setFirstName] = useState(user?.firstName)
+    const [lastName, setLastName] = useState(user?.lastName)
+    const [city, setCity] = useState(user?.city)
+    const [address, setAddress] = useState(user?.address)
+    const [startDate, setStartDate] = useState(user?.startDate)
+    const [endDate, setEndDate] = useState(user?.EndDate)
+    const [country, setCountry] = useState(user.country);
+    const [state, setState] = useState(user?.state);
+    const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName);
+    const [howHeard, setHowHeard] = useState(user?.howHeard);
+    const [major, setMajor] = useState(user?.major)
+    const [isSchoolTeacher, setIsSchoolTeacher] = useState(user?.isSchoolteacher);
+    const [hasAffiliation, setHasAffiliation] = useState(user.hasAffiliation);
+    const [jobTitle, setJobTitle] = useState(user.jobtitlte);
+    const [employer, setEmployer] = useState(user.employer);
 
     const handleSave = async (e: any) => {
-        validateForm()
         e.preventDefault();
-        // Gather form data
+
+        // Validate form data
+        if (!firstName || !lastName || !country || !address || !city || !state) {
+            // Display an error message or handle validation failure
+            toast.error('Please fill in all required fields');
+            return;
+        }
+
         const formData = {
             firstName,
             lastName,
-            selectedCountry,
-            selectedAddress,
-            selectedCity,
-            selectedState,
+            country,
+            address,
+            city,
+            state,
             lastSchoolName,
-            manualInput,
             howHeard,
-            selectedSchool,
-            selectedMajor,
+            major,
             isSchoolTeacher,
             hasAffiliation,
             jobTitle,
@@ -227,21 +82,43 @@ export default function StepOne() {
             endDate,
         };
 
-        // Perform actions to save the data (e.g., send it to the server)
-        try {
-            // Add your save logic here
-            // For example, you can use Axios to send a POST request to your server
-            await axios.post('/api/saveFormData', formData);
+        // Query the database to check if the user exists
+        const q = query(
+            collection(db, 'users'),
+            where('userId', '==', user?.userId)
+        );
 
-            // Show success message
-            toast.success('Data saved successfully');
+        const querySnapshot = await getDocs(q);
 
-        } catch (error) {
-            // Handle errors
-            console.error('Error saving data:', error);
-            toast.error('Error saving data. Please try again.');
+        if (!querySnapshot.empty) {
+            // If the user exists, update the document
+            const docSnapshot = querySnapshot.docs[0];
+            const userDocRef = doc(db, 'users', docSnapshot.id);
+
+            await updateDoc(userDocRef, {
+                firstName,
+                lastName,
+                city,
+                address,
+                startDate,
+                endDate,
+                country,
+                state,
+                lastSchoolName,
+                howHeard,
+                major,
+                isSchoolTeacher,
+                hasAffiliation,
+                jobTitle,
+                employer,
+            });
+        } else {
+            // If the user doesn't exist, you might want to handle this case accordingly
+            console.error('User not found.');
         }
     };
+
+
 
     return (
         <div className="p-3 bg-white">
@@ -267,14 +144,12 @@ export default function StepOne() {
                         <input
                             type="text"
                             placeholder="e.g John"
-                            value="firstName"
+                            value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                        {firstNameError && (
-                            <span className="text-red-500">{firstNameError}</span>
-                        )}
+
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label
@@ -286,13 +161,12 @@ export default function StepOne() {
                         <input
                             type="text"
                             placeholder="e.g Doe"
+                            value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                        {lastNameError && (
-                            <span className="text-red-500">{lastNameError}</span>
-                        )}
+
                     </div>
                 </div>
                 <div className="row">
@@ -306,8 +180,9 @@ export default function StepOne() {
                         <select
                             id="countries"
                             className="mb-2 text-sm font-medium text-gray-700 p-1 border border-gray-700"
-                            onChange={(e) => setSelectedCountry(e.target.value)}
-                            value={selectedCountry}
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+
                         >
                             {countryList.map((country, index) => (
                                 <option key={index} value={country.value}>
@@ -315,9 +190,7 @@ export default function StepOne() {
                                 </option>
                             ))}
                         </select>
-                        {countryError && (
-                            <span className="text-red-500">{countryError}</span>
-                        )}
+
                     </div>
                     <div className="flex col-md-7 flex-col items-center justify-center">
                         <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
@@ -336,13 +209,12 @@ export default function StepOne() {
                         <input
                             type="text"
                             placeholder="address"
-                            onChange={(e) => setSelectedAddress(e.target.value)}
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                        {AddressError && (
-                            <span className="text-red-500">{AddressError}</span>
-                        )}
+
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label
@@ -354,13 +226,12 @@ export default function StepOne() {
                         <input
                             type="text"
                             placeholder="city"
-                            onChange={(e) => setSelectedCity(e.target.value)}
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                        {cityError && (
-                            <span className="text-red-500">{cityError}</span>
-                        )}
+
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label
@@ -372,14 +243,12 @@ export default function StepOne() {
                         <input
                             type="text"
                             placeholder="state"
-                            onChange={(e) => setSelectedState(e.target.value)}
-                            value={selectedState}
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                        {stateError && (
-                            <span className="text-red-500">{stateError}</span>
-                        )}
+
                     </div>
                 </div>
                 <div className="row">
@@ -393,13 +262,12 @@ export default function StepOne() {
                         <input
                             type="text"
                             placeholder=""
+                            value={howHeard}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
               font-medium outline-none focus:border-blue-500`}
                             onChange={(e) => setHowHeard(e.target.value)}
                         />
-                        {howHeardError && (
-                            <span className="text-red-500">{howHeardError}</span>
-                        )}
+
                     </div>
                 </div>
 
@@ -417,34 +285,12 @@ export default function StepOne() {
                         <input
                             type="text"
                             placeholder="Search your school"
+                            value={lastSchoolName}
                             onChange={(e) => setLastSchoolName(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                        {lastSchoolNameError && (
-                            <span className="text-red-500">{lastSchoolNameError}</span>
-                        )}
-                    </div>
-                    <div className="flex col-md-1 justify-center align-center text-center item-center">
-                        <p className="pt-3">or</p>
-                    </div>
-                    <div className="flex col-md-4 flex-col">
-                        <label
-                            htmlFor="manualInput"
-                            className="mb-2 text-sm font-medium text-white"
-                        >
-                            Manual input
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Manual input"
-                            onChange={(e) => setManualInput(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
-                  font-medium outline-none focus:border-blue-500`}
-                        />
-                        {manualInputError && (
-                            <span className="text-red-500">{manualInputError}</span>
-                        )}
+
                     </div>
                 </div>
                 <div className="row ">
@@ -458,13 +304,11 @@ export default function StepOne() {
                         <input
                             type="text"
                             placeholder="major"
-                            onChange={(e) => setSelectedMajor(e.target.value)}
+                            onChange={(e) => setMajor(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                        {majorError && (
-                            <span className="text-red-500">{majorError}</span>
-                        )}
+
                     </div>
 
                 </div>
@@ -488,9 +332,7 @@ export default function StepOne() {
                                 className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium outline-none focus:border-blue-500"
                             />
                         </div>
-                        {isSchoolTeacherError && (
-                            <span className="text-red-500">{isSchoolTeacherError}</span>
-                        )}
+
                     </div>
 
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
@@ -506,9 +348,7 @@ export default function StepOne() {
                                 className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium outline-none focus:border-blue-500"
                             />
                         </div>
-                        {hasAffiliationError && (
-                            <span className="text-red-500">{hasAffiliationError}</span>
-                        )}
+
                     </div>
                 </div>
 
@@ -535,9 +375,7 @@ export default function StepOne() {
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                        {jobTitleError && (
-                            <span className="text-red-500">{jobTitleError}</span>
-                        )}
+
                     </div>
                     <div className="flex col-md-3 flex-col">
                         <label
@@ -553,9 +391,7 @@ export default function StepOne() {
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
-                        {employerError && (
-                            <span className="text-red-500">{employerError}</span>
-                        )}
+
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label
@@ -571,9 +407,7 @@ export default function StepOne() {
                                     onChange={(e) => setStartDate(e.target.value)}
                                     className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
                                 />
-                                {startDateError && (
-                                    <span className="text-red-500">{startDateError}</span>
-                                )}
+
                             </div>
                             <div className="col-md-1 flex justify-center align-center items-center text-gray-400">
                                 to
@@ -585,15 +419,11 @@ export default function StepOne() {
                                     onChange={(e) => setEndDate(e.target.value)}
                                     className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
                                 />
-                                {endDateError && (
-                                    <span className="text-red-500">{endDateError}</span>
-                                )}
+
                             </div>
                         </div>
                     </div>
                 </div>
-
-
 
                 <div
                     className="mt-4 cursor-pointer rounded-xl bg-green-500 py-2 text-center text-white"
@@ -603,43 +433,4 @@ export default function StepOne() {
             </form>
         </div>
     )
-}
-
-function setLastNameError(arg0: string) {
-    throw new Error('Function not implemented.')
-}
-
-
-function setCountryError(arg0: string) {
-    throw new Error('Function not implemented.')
-}
-
-
-function setLastSchoolNameError(arg0: string) {
-    throw new Error('Function not implemented.')
-}
-
-
-function setManualInputError(arg0: string) {
-    throw new Error('Function not implemented.')
-}
-
-
-function setHowHeardError(arg0: string) {
-    throw new Error('Function not implemented.')
-}
-
-
-function setIsSchoolTeacherError(arg0: string) {
-    throw new Error('Function not implemented.')
-}
-
-
-function setHasAffiliationError(arg0: string) {
-    throw new Error('Function not implemented.')
-}
-
-
-function setJobTitleError(arg0: string) {
-    throw new Error('Function not implemented.')
 }
