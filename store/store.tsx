@@ -9,31 +9,20 @@ type Step1 = {
   selectedCity: string;
   selectedState: string;
   selectedHowHeard: string;
-  isSchoolTeacher: 'Yes' | 'No';
+  isSchoolTeacher: boolean; // Updated to boolean
   selectedMajor: string;
-  hasAffiliation: 'Yes' | 'No';
+  hasAffiliation: boolean; // Updated to boolean
   jobTitle: string;
   employer: string;
   startDate: string;
   endDate: string;
 };
 
-type Step2 = {
-  description: string;
-};
-
-type Step3 = {
-  budget: string;
-};
-
 interface Store {
   step1: Step1;
-  step2: Step2;
-  step3: Step3; // Added Step3
-  setStep1Data: (step1Data: Step1) => void;
-  setStep2Data: (description: string) => void;
-  setStep3Data: (budget: string) => void; // Added setStep3Data
-  clearStore: () => void;
+  // ... other code ...
+  setStep1Data: (step1Data: Partial<Step1>) => void; // Updated to accept Partial<Step1>
+  // ... other code ...
 }
 
 const useFormStore = create<Store>()(
@@ -47,20 +36,15 @@ const useFormStore = create<Store>()(
         selectedCity: '',
         selectedState: '',
         selectedHowHeard: '',
-        isSchoolTeacher: 'No',
+        isSchoolTeacher: false, // Default to false
         selectedMajor: '',
-        hasAffiliation: 'No',
+        hasAffiliation: false, // Default to false
         jobTitle: '',
         employer: '',
         startDate: '',
         endDate: '',
       },
-      step2: {
-        description: '',
-      },
-      step3: {
-        budget: '',
-      },
+      // ... other code ...
       setStep1Data: (step1Data) =>
         set((state) => ({
           ...state,
@@ -69,48 +53,7 @@ const useFormStore = create<Store>()(
             ...step1Data,
           },
         })),
-      setStep2Data: (description) =>
-        set((state) => ({
-          ...state,
-          step2: {
-            ...state.step2,
-            description,
-          },
-        })),
-      setStep3Data: (budget) => // Added setStep3Data
-        set((state) => ({
-          ...state,
-          step3: {
-            ...state.step3,
-            budget,
-          },
-        })),
-
-      clearStore: () =>
-        set({
-          step1: {
-            firstName: '',
-            lastName: '',
-            selectedCountry: '',
-            selectedAddress: '',
-            selectedCity: '',
-            selectedState: '',
-            selectedHowHeard: '',
-            isSchoolTeacher: 'No',
-            selectedMajor: '',
-            hasAffiliation: 'No',
-            jobTitle: '',
-            employer: '',
-            startDate: '',
-            endDate: '',
-          },
-          step2: {
-            description: '',
-          },
-          step3: {
-            budget: '',
-          },
-        }),
+      // ... other code ...
     }),
     {
       name: 'formStore',

@@ -53,8 +53,14 @@ export default function Step1({ handleNextStep }: Props) {
     const [employerError, setEmployerError] = useState('');
     const [startDateError, setStartDateError] = useState('');
     const [endDateError, setEndDateError] = useState('');
+    const [howHeard, setHowHeard] = useState('')
+    const [howHeardError, setHowHeardError] = useState('')
+    const [lastSchoolName, setLastSchoolName] = useState('');
+    const [manualInput, setManualInput] = useState('');
+    const [lastSchoolNameError, setLastSchoolNameError] = useState('');
+    const [manualInputError, setManualInputError] = useState('');
 
-    const { user } = UserAuth()
+
 
     const setData = useFormStore((state) => state.setStep1Data)
 
@@ -105,6 +111,26 @@ export default function Step1({ handleNextStep }: Props) {
             hasError = true
         } else {
             setStateError('')
+        }
+        if (!lastSchoolName) {
+            setLastSchoolNameError('This field is required');
+            hasError = true;
+        } else {
+            setLastSchoolNameError('');
+        }
+
+        // Validate manualInput
+        if (!manualInput) {
+            setManualInputError('This field is required');
+            hasError = true;
+        } else {
+            setManualInputError('');
+        }
+        if (!howHeard.trim()) {
+            setHowHeardError('This field is required');
+            hasError = true;
+        } else {
+            setHowHeardError('');
         }
         if (!selectedSchool) {
             setSchoolError('This field is required')
@@ -166,7 +192,26 @@ export default function Step1({ handleNextStep }: Props) {
         if (hasError) {
             return
         }
-
+        setData({
+            firstName,
+            lastName,
+            selectedCountry,
+            selectedAddress,
+            selectedCity,
+            selectedState,
+            lastSchoolName,
+            manualInput,
+            howHeard,
+            selectedSchool,
+            selectedMajor,
+            isSchoolTeacher: isSchoolTeacher === 'Yes', // Convert to boolean
+            hasAffiliation: hasAffiliation === 'Yes', // Convert to boolean
+            jobTitle,
+            employer,
+            startDate,
+            endDate,
+        });
+    
     }
 
 
@@ -318,51 +363,61 @@ export default function Step1({ handleNextStep }: Props) {
                         </label>
                         <input
                             type="text"
-                            placeholder="" className={`rounded-lg border bg-gray-50 px-1 py-2
-                  font-medium outline-none focus:border-blue-500`}
+                            placeholder=""
+                            className={`rounded-lg border bg-gray-50 px-1 py-2
+              font-medium outline-none focus:border-blue-500`}
+                            onChange={(e) => setHowHeard(e.target.value)}
                         />
+                        {howHeardError && (
+                            <span className="text-red-500">{howHeardError}</span>
+                        )}
                     </div>
-
                 </div>
+
                 <p className="text-3xl font-bold text-blue-950">
                     Education
                 </p>
                 <div className="row">
-                    <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
-                        <div className="question col-md-8">
-                            Have you ever been a school teacher?
-                        </div>
-                        <div className="flex items-right space-x-4">
-                            <label className="flex items-center">
-                                <input
-                                    type="radio"
-                                    name="teacher-radio"
-                                    value="No"
-                                    className="mr-2"
-                                    checked={isSchoolTeacher === 'No'}
-                                    onChange={() => setIsSchoolTeacher('No')}
-                                />
-                                No
-                            </label>
-                            <label className="flex items-center">
-                                <input
-                                    type="radio"
-                                    name="teacher-radio"
-                                    value="Yes"
-                                    className="mr-2"
-                                    checked={isSchoolTeacher === 'Yes'}
-                                    onChange={() => setIsSchoolTeacher('Yes')}
-                                />
-                                Yes
-                            </label>
-                            {isSchoolTeacherError && (
-                                <span className="text-red-500">{isSchoolTeacherError}</span>
-                            )}
-                        </div>
+                    <div className="flex col-md-4 flex-col">
+                        <label
+                            htmlFor="lastSchoolName"
+                            className="mb-2 text-sm font-medium text-gray-700"
+                        >
+                            Name of the last school you attended
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Search your school"
+                            onChange={(e) => setLastSchoolName(e.target.value)}
+                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                  font-medium outline-none focus:border-blue-500`}
+                        />
+                        {lastSchoolNameError && (
+                            <span className="text-red-500">{lastSchoolNameError}</span>
+                        )}
+                    </div>
+                    <div className="flex col-md-1 justify-center align-center text-center item-center">
+                        <p className="pt-3">or</p>
+                    </div>
+                    <div className="flex col-md-4 flex-col">
+                        <label
+                            htmlFor="manualInput"
+                            className="mb-2 text-sm font-medium text-white"
+                        >
+                            Manual input
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Manual input"
+                            onChange={(e) => setManualInput(e.target.value)}
+                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                  font-medium outline-none focus:border-blue-500`}
+                        />
+                        {manualInputError && (
+                            <span className="text-red-500">{manualInputError}</span>
+                        )}
                     </div>
                 </div>
-
-
                 <div className="row ">
                     <div className="flex flex-col col-md-4  ">
                         <label
@@ -391,71 +446,73 @@ export default function Step1({ handleNextStep }: Props) {
                     Note: You do not need to have any prior experience as a teacher to work at QualityUnitedWriters. Please be 100% truthful about your past work experience. Misrepresenting your work experience will result in your application being rejected or your account being banned in the future.
                 </p>
                 <div className="row">
-                    <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
-                        <div className="question col-md-8">
-                            Have you ever been a school teacher?
-                        </div>
-                        <div className="flex items-right space-x-4">
-                            <label className="flex items-center">
-                                <input
-                                    type="radio"
-                                    name="teacher-radio"
-                                    value="No"
-                                    className="mr-2"
-                                    checked={isSchoolTeacher === 'No'}
-                                    onChange={() => setIsSchoolTeacher('No')}
-                                />
-                                No
-                            </label>
-                            <label className="flex items-center">
-                                <input
-                                    type="radio"
-                                    name="teacher-radio"
-                                    value="Yes"
-                                    className="mr-2"
-                                    checked={isSchoolTeacher === 'Yes'}
-                                    onChange={() => setIsSchoolTeacher('Yes')}
-                                />
-                                Yes
-                            </label>
-                        </div>
-                        {isSchoolTeacherError && (
-                            <span className="text-red-500">{isSchoolTeacherError}</span>
-                        )}
-                    </div>
-                    <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
-                        <div className="question col-md-8">
-                            Do you have other professional affiliation with an academic institution?
-                        </div>
-                        <div className="flex items-right space-x-4">
-                            <label className="flex items-center">
-                                <input
-                                    type="radio"
-                                    name="affiliation-radio"
-                                    value="No"
-                                    className="mr-2"
-                                    checked={hasAffiliation === 'No'}
-                                    onChange={() => setHasAffiliation('No')}
-                                />
-                                No
-                            </label>
-                            <label className="flex items-center">
-                                <input
-                                    type="radio"
-                                    name="affiliation-radio"
-                                    value="Yes"
-                                    className="mr-2"
-                                    checked={hasAffiliation === 'Yes'}
-                                    onChange={() => setHasAffiliation('Yes')}
-                                />
-                                Yes
-                            </label>
-                        </div>
-                        {hasAffiliationError && (
-                            <span className="text-red-500">{hasAffiliationError}</span>
-                        )}
-                    </div>
-                </div>
+  <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
+    <div className="question col-md-8">
+      Have you ever been a school teacher?
+    </div>
+    <div className="flex items-right space-x-4">
+      <label className="flex items-center">
+        <input
+          type="radio"
+          name="teacher-radio"
+          value="No"
+          className="mr-2"
+          checked={!isSchoolTeacher}
+          onChange={() => setIsSchoolTeacher(false)}
+        />
+        No
+      </label>
+      <label className="flex items-center">
+        <input
+          type="radio"
+          name="teacher-radio"
+          value="Yes"
+          className="mr-2"
+          checked={isSchoolTeacher}
+          onChange={() => setIsSchoolTeacher(true)}
+        />
+        Yes
+      </label>
+    </div>
+    {isSchoolTeacherError && (
+      <span className="text-red-500">{isSchoolTeacherError}</span>
+    )}
+  </div>
+  <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
+    <div className="question col-md-8">
+      Do you have other professional affiliation with an academic institution?
+    </div>
+    <div className="flex items-right space-x-4">
+      <label className="flex items-center">
+        <input
+          type="radio"
+          name="affiliation-radio"
+          value="No"
+          className="mr-2"
+          checked={!hasAffiliation}
+          onChange={() => setHasAffiliation(false)}
+        />
+        No
+      </label>
+      <label className="flex items-center">
+        <input
+          type="radio"
+          name="affiliation-radio"
+          value="Yes"
+          className="mr-2"
+          checked={hasAffiliation}
+          onChange={() => setHasAffiliation(true)}
+        />
+        Yes
+      </label>
+    </div>
+    {hasAffiliationError && (
+      <span className="text-red-500">{hasAffiliationError}</span>
+    )}
+  </div>
+</div>
+
+           
 
                 <p className="text-3xl font-bold text-blue-950">
                     Work Experience
