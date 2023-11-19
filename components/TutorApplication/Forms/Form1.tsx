@@ -44,15 +44,15 @@ export default function Form1() {
     const [address, setAddress] = useState(user?.address)
     const [startDate, setStartDate] = useState(user?.startDate)
     const [endDate, setEndDate] = useState(user?.EndDate)
-    const [country, setCountry] = useState(user.country);
+    const [country, setCountry] = useState(user?.country);
     const [state, setState] = useState(user?.state);
     const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName);
     const [howHeard, setHowHeard] = useState(user?.howHeard);
     const [major, setMajor] = useState(user?.major)
     const [isSchoolTeacher, setIsSchoolTeacher] = useState(user?.isSchoolteacher);
-    const [hasAffiliation, setHasAffiliation] = useState(user.hasAffiliation);
-    const [jobTitle, setJobTitle] = useState(user.jobtitlte);
-    const [employer, setEmployer] = useState(user.employer);
+    const [hasAffiliation, setHasAffiliation] = useState(user?.hasAffiliation);
+    const [jobTitle, setJobTitle] = useState(user?.jobtitlte);
+    const [employer, setEmployer] = useState(user?.employer);
 
     const handleSave = async (e: any) => {
         e.preventDefault();
