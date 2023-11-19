@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react'
 import { TfiClose } from 'react-icons/tfi'
 
 import { auth } from '../../firebase'
-import Form1 from 'components/TutorApplication/Forms/Form1'
+import Form2 from 'components/TutorApplication/Forms/Form2'
 
 
 
@@ -57,7 +57,7 @@ export default function Step1() {
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
                 <div className="mx-auto mt-20 min-w-100">
-                    <Form1/>
+                    <Form2/>
                 </div>
             </div>
         </div>

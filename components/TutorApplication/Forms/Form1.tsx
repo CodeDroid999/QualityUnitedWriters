@@ -33,7 +33,7 @@ export const formatDate = (dateString) => {
 
 
 
-export default function StepOne() {
+export default function Form1() {
     // Define constants for state variables using useState
     const { user } = UserAuth()
     const router = useRouter()
