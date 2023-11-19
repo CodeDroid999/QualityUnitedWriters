@@ -35,7 +35,7 @@ export default function LogIn() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        router.push(redirect || '/tutor-application')
+        router.push(redirect || '/tutor-application/step1')
         toast.success('Logged In')
       }
     })
