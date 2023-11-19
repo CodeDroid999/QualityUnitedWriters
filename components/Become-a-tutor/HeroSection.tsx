@@ -23,7 +23,7 @@ const HeroArea = () => {
                 <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <div className="container">
+                            <div className="container"></div>
                                 <div className="row">
                                     <div className="col-md-7">
                                         <div className="detail-box">
@@ -34,10 +34,10 @@ const HeroArea = () => {
                                                 Homework questions
                                             </h1>
                                             <p>
-                                                Earn up to $7,500 USD monthly working from home tutoring students!
+                                                Earn up to <strong$7,500 USD </strong>monthly working from home tutoring students!
                                             </p>
                                             <div className="btn-box whitespace-nowrap">
-                                                <Link href="/tutor-application" className="btn-2 rounded bg-yellow-500 text-white"> Apply now! </Link>
+                                                <Link href="/tutor-application/step1" className="btn-2 rounded bg-yellow-500 text-white"> Apply now! </Link>
                                             </div>
                                             <p>
                                                 Now accepting tutors from all over the world!
