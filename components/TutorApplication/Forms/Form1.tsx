@@ -54,41 +54,42 @@ export default function Form1() {
     const [jobTitle, setJobTitle] = useState(user?.jobtitlte);
     const [employer, setEmployer] = useState(user?.employer);
 
-    const handleSave = async (e: any) => {
-        e.preventDefault();
+const handleSave = async (e: any) => {
+    e.preventDefault();
 
-        // Validate form data
-        if (!firstName || !lastName || !country || !address || !city || !state) {
-            // Display an error message or handle validation failure
-            toast.error('Please fill in all required fields');
-            return;
-        }
+    // Validate form data
+    if (!firstName || !lastName || !country || !address || !city || !state) {
+        // Display an error message or handle validation failure
+        toast.error('Please fill in all required fields');
+        return;
+    }
 
-        const formData = {
-            userId,
-            firstName,
-            lastName,
-            country,
-            address,
-            city,
-            state,
-            lastSchoolName,
-            howHeard,
-            major,
-            isSchoolTeacher,
-            hasAffiliation,
-            jobTitle,
-            employer,
-            startDate,
-            endDate,
-        };
+    const formData = {
+        userId,
+        firstName,
+        lastName,
+        country,
+        address,
+        city,
+        state,
+        lastSchoolName,
+        howHeard,
+        major,
+        isSchoolTeacher,
+        hasAffiliation,
+        jobTitle,
+        employer,
+        startDate,
+        endDate,
+    };
 
-        // Query the database to check if the user exists
-        const q = query(
-            collection(db, 'users'),
-            where('userId', '==', user?.userId)
-        );
+    // Query the database to check if the user exists
+    const q = query(
+        collection(db, 'users'),
+        where('userId', '==', user?.userId)
+    );
 
+    try {
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
@@ -113,11 +114,16 @@ export default function Form1() {
                 jobTitle,
                 employer,
             });
+
+            console.log('User document updated successfully');
         } else {
             // If the user doesn't exist, you might want to handle this case accordingly
             console.error('User not found.');
         }
-    };
+    } catch (error) {
+        console.error('Error querying or updating user document:', error);
+    }
+};
 
 
 
