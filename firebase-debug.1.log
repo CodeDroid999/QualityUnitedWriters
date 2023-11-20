@@ -1,0 +1,28 @@
+[debug] [2023-11-19T15:15:34.651Z] ----------------------------------------------------------------------
+[debug] [2023-11-19T15:15:34.663Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-11-19T15:15:34.664Z] CLI Version:   12.9.1
+[debug] [2023-11-19T15:15:34.665Z] Platform:      win32
+[debug] [2023-11-19T15:15:34.666Z] Node Version:  v18.14.0
+[debug] [2023-11-19T15:15:34.668Z] Time:          Sun Nov 19 2023 18:15:34 GMT+0300 (East Africa Time)
+[debug] [2023-11-19T15:15:34.668Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-19T15:15:35.044Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-19T15:15:35.047Z] > authorizing via signed-in user (johnmwega2002@gmail.com)
+[debug] [2023-11-19T15:15:35.047Z] [iam] checking project qualityunitedwriters for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update"]
+[debug] [2023-11-19T15:15:35.052Z] > refreshing access token with scopes: []
+[debug] [2023-11-19T15:15:35.057Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-11-19T15:15:35.058Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-11-19T15:15:46.481Z] *** [apiv2] error from fetch(https://www.googleapis.com/oauth2/v3/token, {"headers":{},"method":"POST","body":{"_overheadLength":545,"_valueLength":212,"_valuesToMeasure":[],"writable":false,"readable":true,"dataSize":0,"maxDataSize":2097152,"pauseStreams":true,"_released":true,"_streams":[],"_currentStream":null,"_insideLoop":false,"_pendingNext":false,"_boundary":"--------------------------721059705559825835210714","_events":{},"_eventsCount":1}}): FetchError: request to https://www.googleapis.com/oauth2/v3/token failed, reason: getaddrinfo ENOTFOUND www.googleapis.com
+[debug] [2023-11-19T15:15:46.483Z] [iam] error while checking permissions, command may fail: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2023-11-19T15:15:46.484Z] > refreshing access token with scopes: []
+[debug] [2023-11-19T15:15:46.487Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-11-19T15:15:46.488Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-11-19T15:15:57.715Z] *** [apiv2] error from fetch(https://www.googleapis.com/oauth2/v3/token, {"headers":{},"method":"POST","body":{"_overheadLength":545,"_valueLength":212,"_valuesToMeasure":[],"writable":false,"readable":true,"dataSize":0,"maxDataSize":2097152,"pauseStreams":true,"_released":true,"_streams":[],"_currentStream":null,"_insideLoop":false,"_pendingNext":false,"_boundary":"--------------------------662104007649256222825285","_events":{},"_eventsCount":1}}): FetchError: request to https://www.googleapis.com/oauth2/v3/token failed, reason: getaddrinfo ENOTFOUND www.googleapis.com
+[debug] [2023-11-19T15:15:57.716Z] [functions] service account IAM check errored, deploy may fail: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci {"name":"FirebaseError","children":[],"exit":1,"message":"Authentication Error: Your credentials are no longer valid. Please run \u001b[1mfirebase login --reauth\u001b[22m\n\nFor CI servers and headless environments, generate a new token with \u001b[1mfirebase login:ci\u001b[22m","status":500}
+[debug] [2023-11-19T15:15:57.720Z] > refreshing access token with scopes: []
+[debug] [2023-11-19T15:15:57.721Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-11-19T15:15:57.721Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]

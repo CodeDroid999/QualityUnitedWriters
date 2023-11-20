@@ -5,11 +5,8 @@ const Form2 = ({ onSave, onBack, subjects, rates }) => {
   const [selectedRate, setSelectedRate] = useState(rates || '$10');
 
   const handleSave = () => {
-    // You can save the selected subjects and rate here
-    onSave({
-      subjects: selectedSubjects,
-      rate: selectedRate,
-    });
+    // Perform any necessary actions before moving to the next step
+    onSave({ selectedSubjects, selectedRate });
   };
 
   return (
@@ -51,16 +48,18 @@ const Form2 = ({ onSave, onBack, subjects, rates }) => {
             Preferred Rates
           </label>
           <div className="flex items-center mt-2 space-x-2">
-            <input
-              type="radio"
-              id="rate10"
-              value="$10"
-              checked={selectedRate === '$10'}
-              onChange={() => setSelectedRate('$10')}
-            />
-            <label htmlFor="rate10">$10 per hour</label>
+            <select
+              value={selectedRate}
+              onChange={(e) => setSelectedRate(e.target.value)}
+              className="border rounded p-1"
+            >
+              {Array.from({ length: 15 }, (_, index) => (index + 1) * 10).map((rate) => (
+                <option key={rate} value={`$${rate}`}>
+                  {`$${rate} per hour`}
+                </option>
+              ))}
+            </select>
           </div>
-          {/* Add more radio options for different rates if needed */}
         </div>
 
         <div className="flex gap-4">
